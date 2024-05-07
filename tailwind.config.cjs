@@ -7,8 +7,11 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--aw-color-primary)',
+        primarydark: 'var(--aw-color-primary-dark)',
         secondary: 'var(--aw-color-secondary)',
         accent: 'var(--aw-color-accent)',
+        highlight: 'var(--aw-color-highlight)',
+        highlightmuted: 'var(--aw-color-highlight-muted)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
       },

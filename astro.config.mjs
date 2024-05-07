@@ -9,6 +9,7 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from '@playform/compress';
+import react from '@astrojs/react';
 
 import astrowind from './vendor/integration';
 
@@ -33,6 +34,7 @@ export default defineConfig({
     }),
     sitemap(),
     mdx(),
+    react(),
     icon({
       include: {
         tabler: ['*'],
