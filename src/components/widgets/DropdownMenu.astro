@@ -43,18 +43,18 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 {text}{' '}
                 <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
               </button>
-              <div class="dropdown-menu md:w-full left-0 md:absolute px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
-                <ul class="md:flex mx-auto gap-4">
+              <div class="dropdown-menu absolute w-full left-0 text-black md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+                <ul class="flex">
                   {links.map(({ text: text2, links: children2 }) => (
                     <li class="">
-                      <h4 class="text-primary font-bold ">{text2}</h4>
+                      <h4>{text2}</h4>
                       {children2?.length ? (
-                        <ul class="text-black pl-4 md:pl-0 font-medium md:min-w-[200px] md:block">
+                        <ul class="text-black md:backdrop-blur-md dark:md:bg-dark rounded pl-4 md:pl-0 font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
                           {children2.map(({ text: text3, href: href3 }) => (
                             <li>
                               <a
                                 class:list={[
-                                  'hover:text-link font-normal py-1 block whitespace-no-wrap',
+                                  'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
                                   { 'aw-link-active': href3 === currentPath },
                                 ]}
                                 href={href3}
