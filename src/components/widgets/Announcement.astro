@@ -1,11 +1,43 @@
 ---
-function hideNotification() {
-  document.querySelector('.justify-between').style.display = 'none';
-}
+import { homeData } from '~/endpoints';
+const response = await fetch(homeData);
+const data = await response.json();
+const { alert_banner_content } = data[0].acf;
+console.log('alert_banner_content :>> ', alert_banner_content);
 ---
 
+<script>
+  import Cookies from 'js-cookie';
+  const notificationIsVisible = Cookies.get('notificationIsVisible') || true;
+  console.log('notificationIsVisible :>> ', notificationIsVisible);
+
+  const closeBtn = document.querySelector('.close-btn');
+  const annBar = document.querySelector('.announcement');
+
+  // Hide the notification if the cookie is set to false
+  if (notificationIsVisible !== 'false') {
+    annBar.style.display = 'flex';
+  }
+
+  closeBtn
+    ? closeBtn.addEventListener('click', () => {
+        hideNotification();
+      })
+    : null;
+
+  function hideNotification() {
+    Cookies.set('notificationIsVisible', false, {
+      // expires: 1 / 6000, // 14 seconds
+      expires: 7, // 7 days
+    });
+    if (annBar) {
+      annBar.style.display = 'none';
+    }
+  }
+</script>
+
 <div
-  class="h-12 justify-between items-center dark text-sm bg-highlightmuted dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden md:flex gap-1 overflow-hidden relative text-ellipsis whitespace-nowrap"
+  class="announcement h-20 min-h-12 justify-between items-center dark text-sm bg-highlightmuted dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden gap-1 overflow-hidden relative text-ellipsis whitespace-nowrap"
 >
   <div class="bg-highlight py-2 px-4 max-w-12 h-full">
     <svg
@@ -24,8 +56,9 @@ function hideNotification() {
       ></path></svg
     >
   </div>
-  <p>Announcment Bar</p>
-  <div class="bg-highlight py-2 px-3 h-full flex items-center">
-    <button onClick={hideNotification}>X</button>
+  <div class="text-wrap flex justify-center items-center px-8 py-6" set:html={alert_banner_content} />
+  <div class="flex items-center h-full">
+    <!-- <button class="announcement-btn" onclick={() => hideNotification()}>X</button> -->
+    <button class="close-btn bg-highlight py-2 px-3 h-full">X</button>
   </div>
 </div>

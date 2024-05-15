@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
@@ -9,18 +8,22 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import Carousel from '~/components/widgets/homepage/Carousel.astro';
+import Carousel from '~/components/widgets/homepage/Carousel.jsx';
 import Intro from '~/components/widgets/homepage/Intro.astro';
+import { carouselData } from '~/endpoints';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
+
+const response = await fetch(carouselData);
+const data = await response.json();
 ---
 
 <Layout metadata={metadata}>
   <!-- Carousel Widget ******************* -->
-  <Carousel />
+  <Carousel client:load carouselData={data} />
 
   <!-- Intro Widget ********************** -->
   <Intro />
