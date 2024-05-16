@@ -5,14 +5,15 @@ const data = await response.json();
 const events = data.values;
 // console.log('EVENTS: ', events);
 
+let filteredEvents = [];
+
 if (!events) {
-  filteredEvents = [];
   return;
 }
 
 events.shift();
 
-const filteredEvents = events
+filteredEvents = events
   .filter((event, i) => {
     const eventDate = new Date(event[0].replace(/.*?,\s/, '')).valueOf();
     const now = Date.now().valueOf();
