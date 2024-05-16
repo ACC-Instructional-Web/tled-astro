@@ -1,0 +1,52 @@
+---
+import { eventsSheet } from '~/endpoints';
+const response = await fetch(eventsSheet);
+const data = await response.json();
+const events = data.values;
+// console.log('EVENTS: ', events);
+
+if (!events) {
+  filteredEvents = [];
+  return;
+}
+
+events.shift();
+
+const filteredEvents = events
+  .filter((event, i) => {
+    const eventDate = new Date(event[0].replace(/.*?,\s/, '')).valueOf();
+    const now = Date.now().valueOf();
+    // Return if date is in the future
+    return eventDate + 1000 * 60 * 60 * 24 > now;
+  })
+  .sort((a, b) => {
+    // Take the day of the week off the front of the string and convert to Date # value
+    // Probably unnecessary since the events are returned in the order in sheet
+    a = new Date(a[0].replace(/.*?,\s/, '')).valueOf();
+    b = new Date(b[0].replace(/.*?,\s/, '')).valueOf();
+    // console.log(z.toString());
+    return a - b;
+  });
+
+const { length } = Astro.props;
+// console.log('filteredEvents :>> ', filteredEvents);
+---
+
+<div class="flex-1 px-6 py-3 bg-[#fef8e3]">
+  <h2 class="uppercase">Events &amp; Important Dates</h2>
+  <ul>
+    {
+      filteredEvents.length === 0 ? (
+        <li>No upcoming events</li>
+      ) : (
+        filteredEvents.slice(0, length - 1).map((event, i) => (
+          // console.log(event);
+          <li>
+            {event[1]}
+            {event[6] ? <a href={event[6]}>{event[2]}</a> : <span>{event[2]}</span>}
+          </li>
+        ))
+      )
+    }
+  </ul>
+</div>
