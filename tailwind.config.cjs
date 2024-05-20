@@ -16,9 +16,9 @@ module.exports = {
         muted: 'var(--aw-color-text-muted)',
       },
       fontFamily: {
-        sans: ['"Gotham SSm A", "Gotham SSm B","Open Sans"', ...defaultTheme.fontFamily.sans],
+        sans: '"Gotham SSm A", "Gotham SSm B", Arial, Helvetica, sans-serif',
         serif: ['Georgia', ...defaultTheme.fontFamily.serif],
-        heading: ['"Gotham SSm A", "Gotham SSm B","Open Sans"', ...defaultTheme.fontFamily.sans],
+        heading: '"Gotham SSm A", "Gotham SSm B", Arial, Helvetica, sans-serif',
       },
     },
   },
