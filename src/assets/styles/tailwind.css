@@ -84,6 +84,14 @@
 [data-aw-toggle-menu].expanded g > path:last-child {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
+/* Universal Styling Baby! */
+a:hover {
+  text-decoration: underline;
+}
+a {
+  color: var(--aw-color-primary);
+  font-weight: 700;
+}
 
 /* To deprecated */
 

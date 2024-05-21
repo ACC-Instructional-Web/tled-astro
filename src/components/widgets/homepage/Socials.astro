@@ -1,11 +1,40 @@
-<div class="flex items-center justify-center w-full min-h-56 text-center">
-  <div>
-    <h1 class="text-2xl">Socials</h1>
-    <ul>
-      <li><a href="/about-tled/">Learn about Us</a></li>
-      <li><a href="mailto:tledcomms@austincc.edu">Email Us</a></li>
-      <li><a href="https://instruction.austincc.edu/tledupdates/">Blog</a></li>
-      <li><a href="https://lp.constantcontact.com/su/PM24qvk/TLEDnewsletter">Newsletter</a></li>
-    </ul>
-  </div>
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<style>
+  li svg {
+    fill: #4d1979;
+  }
+</style>
+
+<div class="home-social-icons">
+  <Icon name="TLED" class="mb-4 hidden md:block TLED h-24 w-44" />
+  <ul class="flex justify-around">
+    <li>
+      <a href="https://www.youtube.com/channel/UC9J9Z9Q6Z6">
+        <Icon name="youtube" class="w-8 h-8" />
+      </a>
+      <li>
+        <a href="https://www.facebook.com/accTLED/">
+          <Icon name="facebook" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/accTLED">
+          <Icon name="twitter" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/acctled/">
+          <Icon name="instagram" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/austin-community-college-tled">
+          <Icon name="linkedin" class="w-7 h-7" />
+        </a>
+      </li>
+    </li>
+  </ul>
 </div>
