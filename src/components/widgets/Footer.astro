@@ -3,31 +3,69 @@ import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
+import { footerData } from '../../endpoints.js';
+const response = await fetch(footerData);
+const data = await response.json();
 
-interface Links {
-  title?: string;
-  links: Array<Link>;
-}
-
-export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
-  footNote?: string;
-  theme?: string;
-}
-
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const links = data.items.map(({ title, url, children }) => ({
+  text: title,
+  href: url,
+  links: children?.map(({ title: title2, url: url2 }) => ({
+    text: title2,
+    href: url2,
+  })),
+}));
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+<style>
+  h4 {
+    color: rgb(240, 179, 35);
+  }
+  footer {
+    background-color: var(--aw-color-primary-dark);
+    font-size: 15px;
+  }
+</style>
+<footer class="text-white dark">
+  <div class="flex w-full mx-auto p-6 justify-center">
+    {
+      links.map(({ text, href, links }) => (
+        <div class="basis:1/4 p-4">
+          <h4 class="font-semibold pb-2.5">{text}</h4>
+          <ul>
+            {links.map(({ text, href }) => (
+              <li class="pb-2.5">
+                <a class="text-white font-normal" href={href}>
+                  {text.replace(/&amp;/g, '&')}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+    <div class="basis:1/4 p-4">
+      <Icon name="TLEDWhite" class="mb-4 hidden md:block fill-white h-24 w-44" />
+      <div class="" style="margin-left: 10px;">
+        <div class="text-white"><a href="mailto:tledwebsite@austincc.edu">tledwebsite@austincc.edu</a></div><div
+          class="org"
+        >
+          Austin Community College District
+        </div><div class="adr">
+          <div class="street-address">5930 Middle Fiskville Rd.</div><div>
+            <span class="locality">Austin</span>,<span class="region"> Texas</span><span class="postal-code">
+              78752</span
+            >
+          </div>
+        </div><div class="tel">512-223-4ACC (4222)</div>
+      </div><div class="stand-alone report">
+        <a class="text-white" href="mailto:tledwebsite@austincc.edu">Report a Problem with a Page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Old Menu -->
+  <!-- <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
@@ -98,5 +136,5 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         <Fragment set:html={footNote} />
       </div>
     </div>
-  </div>
+  </div> -->
 </footer>
