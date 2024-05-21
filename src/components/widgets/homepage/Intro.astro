@@ -2,11 +2,11 @@
 import Socials from './Socials.astro';
 import { homeData } from '../../../endpoints.js';
 const res = await fetch(homeData);
-let [page] = await res.json();
+const [page] = await res.json();
 ---
 
 <style>
-  @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 768px) {
     .intro-social-blurb :global(ul) {
       padding-top: 2rem;
       padding-left: 2rem;

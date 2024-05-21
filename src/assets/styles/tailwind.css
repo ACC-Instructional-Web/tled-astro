@@ -85,13 +85,10 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 /* Universal Styling Baby! */
-body {
-  font-family: "Gotham SSm A", "Gotham SSm B", Arial, Helvetica, sans-serif;
-}
-a:hover{
+a:hover {
   text-decoration: underline;
 }
-a{
+a {
   color: var(--aw-color-primary);
   font-weight: 700;
 }

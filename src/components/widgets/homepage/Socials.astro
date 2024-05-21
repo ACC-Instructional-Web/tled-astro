@@ -1,50 +1,40 @@
 ---
-import Image from '~/components/common/Image.astro';
-
-const facebookIcon = '~/assets/images/facebook.svg';
-const instragramIcon = '~/assets/images/instagram.svg';
-const twitterIcon = '~/assets/images/twitter.svg';
-const youtubeIcon = '~/assets/images/youtube.svg';
-const linkedinIcon = '~/assets/images/linkedin.svg';
-
-const tledLogo = '~/assets/images/TLED.svg';
+import { Icon } from 'astro-icon/components';
 ---
 
 <style>
-  /* This is Magic that changes the SVG from black to #4d1979. The way the Image component renders SVG does not
-  allow us to change the path/svg color.  */
-  .home-social-icons li > a > :global(img) {
-    filter: invert(12%) sepia(30%) saturate(6200%) hue-rotate(262deg) brightness(102%) contrast(101%);
+  li svg {
+    fill: #4d1979;
   }
 </style>
 
 <div class="home-social-icons">
-  <Image src={tledLogo} alt="TLED Logo" width={178} class="mb-4 hidden md:block" />
+  <Icon name="TLED" class="mb-4 hidden md:block TLED h-24 w-44" />
   <ul class="flex justify-around">
     <li>
       <a href="https://www.youtube.com/channel/UC9J9Z9Q6Z6">
-        <Image src={youtubeIcon} alt="youtube Icon" width={30} />
+        <Icon name="youtube" class="w-8 h-8" />
       </a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com/accTLED/">
-        <Image src={facebookIcon} alt="facebook Icon" width={26} />
-      </a>
-    </li>
-    <li>
-      <a href="https://twitter.com/accTLED">
-        <Image src={twitterIcon} alt="twitter Icon" width={26} />
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/acctled/">
-        <Image src={instragramIcon} alt="instragram Icon" width={26} />
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/company/austin-community-college-tled">
-        <Image src={linkedinIcon} alt="linkedin Icon" width={28} />
-      </a>
+      <li>
+        <a href="https://www.facebook.com/accTLED/">
+          <Icon name="facebook" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/accTLED">
+          <Icon name="twitter" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/acctled/">
+          <Icon name="instagram" class="w-7 h-7" />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/austin-community-college-tled">
+          <Icon name="linkedin" class="w-7 h-7" />
+        </a>
+      </li>
     </li>
   </ul>
 </div>
