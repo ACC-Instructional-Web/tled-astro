@@ -26,12 +26,12 @@ const links = data.items.map(({ title, url, children }) => ({
     font-size: 15px;
   }
 </style>
-<footer class="text-white dark">
-  <div class="flex w-full mx-auto p-6 justify-center">
+<footer class="text-white dark pt-6">
+  <div class="sm:flex sm:flex-row sm:flex-wrap p-6 justify-center mb-6 max-w-5xl mx-auto">
     {
       links.map(({ text, href, links }) => (
-        <div class="basis:1/4 p-4">
-          <h4 class="font-semibold pb-2.5">{text}</h4>
+        <div class="min-w-48 p-2 sm:basis-1/2 md:basis-1/4">
+          <h4 class="font-semibold pb-2.5">{text.toUpperCase()}</h4>
           <ul>
             {links.map(({ text, href }) => (
               <li class="pb-2.5">
@@ -44,28 +44,29 @@ const links = data.items.map(({ title, url, children }) => ({
         </div>
       ))
     }
-    <div class="basis:1/4 p-4">
-      <Icon name="TLEDWhite" class="mb-4 hidden md:block fill-white h-24 w-44" />
-      <div class="" style="margin-left: 10px;">
-        <div class="text-white"><a href="mailto:tledwebsite@austincc.edu">tledwebsite@austincc.edu</a></div><div
-          class="org"
-        >
-          Austin Community College District
-        </div><div class="adr">
-          <div class="street-address">5930 Middle Fiskville Rd.</div><div>
-            <span class="locality">Austin</span>,<span class="region"> Texas</span><span class="postal-code">
-              78752</span
-            >
-          </div>
-        </div><div class="tel">512-223-4ACC (4222)</div>
-      </div><div class="stand-alone report">
-        <a class="text-white" href="mailto:tledwebsite@austincc.edu">Report a Problem with a Page</a>
+    <div class="p-2 min-w-48 sm:basis-1/2 md:basis-1/4">
+      <Icon name="TLEDWhite" class="mb-4 h-32 w-56" />
+
+      <div class="text-white text-sm font-light pl-2.5">
+        <a class="font-light underline" href="mailto:tledwebsite@austincc.edu">tledwebsite@austincc.edu</a>
+        <p class="pt-4">
+          Austin Community College District<br />
+          5930 Middle Fiskville Rd.<br />
+          Austin, Texas 78752
+        </p>
+        <a href="tel+15122234222" class="font-light underline">512-223-4ACC (4222)</a><br />
+        <p class="pt-4">
+          <a class="text-white font-light underline" href="mailto:tledwebsite@austincc.edu"
+            >Report a Problem with a Page</a
+          >
+        </p>
       </div>
     </div>
   </div>
+</footer>
 
-  <!-- Old Menu -->
-  <!-- <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+<!-- Old Menu -->
+<!-- <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
@@ -137,4 +138,3 @@ const links = data.items.map(({ title, url, children }) => ({
       </div>
     </div>
   </div> -->
-</footer>
