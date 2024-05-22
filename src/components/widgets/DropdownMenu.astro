@@ -24,34 +24,37 @@ const links = data.items.map(({ title, url, children }) => ({
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<nav
-  class="w-full hidden md:flex text-default overflow-y-auto overflow-x-hidden bg-primary text-white"
-  aria-label="Main navigation"
->
+<nav class="md:w-full md:block text-primary overflow-scroll md:overflow-hidden text-lg">
+  <ul class="md:flex items-center justify-between md:max-w-5xl md:mx-auto px-4 bg-white">
+    <li>Semester Prep</li>
+    <li>First Year Faculty</li>
+    <li>Department Chairs</li>
+    <li>Faculty Values</li>
+  </ul>
   <ul
-    class="flex flex-col md:flex-row md:self-center w-full text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
+    class="md:bg-primary md:text-white md:flex flex-col md:flex-nowrap md:flex-row md:self-center w-full text-lg md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
   >
     {
       links.map(({ text, href, links }) => (
         <li class={links?.length ? 'dropdown' : ''}>
           {links?.length ? (
             <>
-              <button type="button" class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
+              <button type="button" class="hover:text-link text-white px-4 py-3 flex items-center bg-primary">
                 {text}{' '}
                 <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
               </button>
-              <div class="dropdown-menu absolute w-full left-0 text-black md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                <ul class="flex">
+              <div class="dropdown-menu md:w-full left-0 md:absolute px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
+                <ul class="md:flex mx-auto gap-4">
                   {links.map(({ text: text2, links: children2 }) => (
                     <li class="">
-                      <h4>{text2}</h4>
+                      <h4 class="text-primary font-bold ">{text2}</h4>
                       {children2?.length ? (
-                        <ul class="text-black md:backdrop-blur-md dark:md:bg-dark rounded pl-4 md:pl-0 font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+                        <ul class="text-black pl-4 md:pl-0 font-medium md:min-w-[200px] md:block">
                           {children2.map(({ text: text3, href: href3 }) => (
                             <li>
                               <a
                                 class:list={[
-                                  'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                                  'hover:text-link font-normal py-1 block whitespace-no-wrap',
                                   { 'aw-link-active': href3 === currentPath },
                                 ]}
                                 href={href3}
@@ -70,7 +73,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           ) : (
             <a
               class:list={[
-                'hover:text-link dark:hover:text-white px-4 py-3 flex items-center',
+                'md:text-white font-normal px-4 py-3 flex items-center',
                 { 'aw-link-active': href === currentPath },
               ]}
               href={href}
