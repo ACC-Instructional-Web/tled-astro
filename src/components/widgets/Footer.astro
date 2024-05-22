@@ -1,101 +1,64 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
+import { footerData } from '../../endpoints.js';
+const response = await fetch(footerData);
+const data = await response.json();
 
-interface Links {
-  title?: string;
-  links: Array<Link>;
-}
-
-export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
-  footNote?: string;
-  theme?: string;
-}
-
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const links = data.items.map(({ title, url, children }) => ({
+  text: title,
+  href: url,
+  links: children?.map(({ title: title2, url: url2 }) => ({
+    text: title2,
+    href: url2,
+  })),
+}));
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-      <div class="col-span-12 lg:col-span-4">
-        <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
-        </div>
-        <div class="text-sm text-muted flex gap-1">
-          {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
-        </div>
-      </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
-                    <a
-                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
-                      <Fragment set:html={text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
-      }
-    </div>
-    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
+<style>
+  h4 {
+    color: rgb(240, 179, 35);
+  }
+  footer {
+    background-color: var(--aw-color-primary-dark);
+  }
+</style>
+<footer class="text-white dark pt-6">
+  <div class="sm:flex sm:flex-row sm:flex-wrap p-6 justify-center pb-6 max-w-5xl mx-auto">
+    {
+      links.map(({ text, links }) => (
+        <div class="min-w-48 p-2 sm:basis-1/2 md:basis-1/4">
+          <h4 class="font-semibold pb-2.5">{text.toUpperCase()}</h4>
+          <ul>
+            {links.map(({ text, href }) => (
+              <li class="pb-2.5">
+                <a class="text-white font-normal text-sm" href={href}>
+                  {text.replace(/&amp;/g, '&')}
                 </a>
               </li>
             ))}
           </ul>
-        ) : (
-          ''
-        )
-      }
+        </div>
+      ))
+    }
+    <div class="p-2 min-w-56 sm:basis-1/2 md:basis-1/4">
+      <Icon name="TLEDWhite" class="mb-4 h-32 w-56" />
 
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
+      <div class="text-white text-sm font-light pl-2.5">
+        <a class="font-light underline underline-offset-2" href="mailto:tledwebsite@austincc.edu"
+          >tledwebsite@austincc.edu</a
+        >
+        <p class="pt-4">
+          Austin Community College District<br />
+          5930 Middle Fiskville Rd.<br />
+          Austin, Texas 78752
+        </p>
+        <a href="tel:+15122234222" class="font-light">512-223-4ACC (4222)</a><br />
+        <p class="pt-4">
+          <a class="text-white font-light text-base" href="mailto:tledwebsite@austincc.edu"
+            >Report a Problem with a Page</a
+          >
+        </p>
       </div>
     </div>
   </div>
