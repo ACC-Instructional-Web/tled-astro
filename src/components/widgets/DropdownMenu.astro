@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { trimSlash } from '~/utils/permalinks';
-import { dropdownData } from '~/endpoints';
+import { dropdownData, topnavData } from '~/endpoints';
 
 const response = await fetch(dropdownData);
 const data = await response.json();
@@ -19,6 +19,14 @@ const links = data.items.map(({ title, url, children }) => ({
   })),
 }));
 
+const tnresponse = await fetch(topnavData);
+const tndata = await tnresponse.json();
+
+const topNavLinks = tndata.items.map(({ title, url }) => ({
+  text: title,
+  href: url,
+}));
+
 // console.log('Children :>> ', JSON.stringify(links.map(({ links }) => ({ links }))));
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
@@ -26,10 +34,15 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
 <nav class="md:w-full md:block text-primary overflow-scroll md:overflow-hidden text-lg">
   <ul class="md:flex items-center justify-between md:max-w-5xl md:mx-auto px-4 bg-white">
-    <li>Semester Prep</li>
-    <li>First Year Faculty</li>
-    <li>Department Chairs</li>
-    <li>Faculty Values</li>
+    {
+      topNavLinks.map(({ text, href }) => (
+        <li>
+          <a class="hover:text-link font-normal px-4 py-3 flex items-center" href={href}>
+            {text}
+          </a>
+        </li>
+      ))
+    }
   </ul>
   <ul
     class="md:bg-primary md:text-white md:flex flex-col md:flex-nowrap md:flex-row md:self-center w-full text-lg md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
