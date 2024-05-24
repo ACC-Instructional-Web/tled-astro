@@ -58,7 +58,7 @@ const {
     class:list={[
       'relative text-default text-white py-3 px-3 md:px-6 mx-auto w-full bg-primarydark',
       {
-        'md:flex md:justify-between': position !== 'center',
+        'flex md:justify-between': position !== 'center',
       },
       {
         'md:grid md:grid-cols-[1fr,3fr,1fr] md:items-center': position === 'center',
@@ -71,9 +71,9 @@ const {
     <a href={getHomePermalink()}>
       <Logo />
     </a>
-    <div class="ml-auto">
-      <a class="text-white" href="#">Calendar</a>
-      <button type="button">Search</button>
+    <div class="sm:ml-auto flex flex-row content-center pt-1">
+      <a class="text-white" href="#"><Icon class="w-8 h-8" name="calendar" /></a>
+      <button class="ml-2 w-8 h-8" type="button"><Icon class="w-8 h-8" name="search" /></button>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
       </div>
