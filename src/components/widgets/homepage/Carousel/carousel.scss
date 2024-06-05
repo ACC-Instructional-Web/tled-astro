@@ -1,0 +1,130 @@
+.carousel-root * {
+  height: fit-content;
+}
+
+.carousel-ctrl-btn {
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.carousel-ctrl-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-ctrl-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+legend h3 {
+  border-bottom: 4px solid white;
+  border-bottom-color: var(--aw-primary-color);
+  text-shadow: 2px 2px 0 #3d1e4a;
+}
+
+#carousel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  max-width: 75em;
+  align-items: center;
+  justify-content: center;
+  // position: relative;
+  // margin-top: -50px;
+
+  li:first-child button {
+    border-left-width: 8px;
+  }
+
+  .carousel-slider {
+    transition: transform 150ms cubic-bezier(0.61, -0.52, 0.17, 1.69);
+    // filter: alpha(opacity=40);
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    background: none;
+    border: 0;
+    font-size: 32px;
+    cursor: pointer;
+  }
+}
+
+.carousel-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  position: relative;
+  width: 150px;
+  height: 100px;
+  border: 4px solid white;
+  border-top-width: 8px;
+  border-left-width: 0;
+  border-right-width: 8px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+  outline: none;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+
+  background-color: #7fb7e3;
+  background-position: center center;
+  background-blend-mode: soft-light;
+  background-size: cover;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    // background: ${(props) => colors[props.index]};
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    position: absolute;
+    // bottom: 0;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+  }
+
+  div {
+    position: relative;
+    z-index: 2;
+    // transition: transform 0.3s;
+  }
+
+  &:focus,
+  &.active {
+    div {
+      transform: translate3d(0, -0.5rem, 0);
+    }
+    &:before {
+      transform: translate3d(0, 0.75rem, 0);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
