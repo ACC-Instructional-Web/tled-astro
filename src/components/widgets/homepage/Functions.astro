@@ -2,9 +2,7 @@
 import { homeData } from '../../../endpoints.js';
 const res = await fetch(homeData);
 const [page] = await res.json();
-const column_1 = await page.acf.layouts[0].column_1;
-const column_2 = await page.acf.layouts[0].column_2;
-const column_3 = await page.acf.layouts[0].column_3;
+const columns = await [page.acf.layouts[0].column_1, page.acf.layouts[0].column_2, page.acf.layouts[0].column_3];
 ---
 
 <style>
@@ -23,14 +21,12 @@ const column_3 = await page.acf.layouts[0].column_3;
 </style>
 <section class="w-full functions my-8">
   <div class="md:grid md:grid-cols-3 justify-between text-base max-w-5xl mx-auto pb-12 pt-12">
-    <div class="md:max-w-80 w-72 bg-white p-5">
-      <Fragment set:html={column_1} />
-    </div>
-    <div class="md:max-w-80 w-72 bg-white p-5">
-      <Fragment set:html={column_2} />
-    </div>
-    <div class="md:max-w-80 w-72 bg-white p-5">
-      <Fragment set:html={column_3} />
-    </div>
+    {
+      columns.map((html) => (
+        <div class="md:max-w-80 w-72 bg-white p-5">
+          <Fragment set:html={html} />
+        </div>
+      ))
+    }
   </div>
 </section>
