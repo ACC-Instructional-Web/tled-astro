@@ -96,13 +96,6 @@ a {
   float: left;
   margin: .5em 1em 1em 0;
 }
-.functions hr{
-  float:none;
-  margin: 20px 0px;
-  width:100%;
-  border-bottom: 2px solid var(--aw-color-primary);
-  opacity:.35;
-}
 /* To deprecated */
 
 .dd *:first-child {
