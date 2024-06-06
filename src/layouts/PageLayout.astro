@@ -24,7 +24,7 @@ const { metadata } = Astro.props;
     <!-- <Header {...headerData} isSticky showRssFeed showToggleTheme /> -->
     <Header {...headerData} isSticky />
   </slot>
-  <main>
+  <main class="relative z-0">
     <slot />
   </main>
   <slot name="footer">

@@ -32,12 +32,12 @@ const topNavLinks = tndata.items.map(({ title, url }) => ({
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<nav class="md:w-full md:block text-primary overflow-scroll md:overflow-hidden text-lg">
-  <ul class="md:flex items-center justify-between md:max-w-5xl md:mx-auto px-4 bg-white">
+<nav class="relative h-fit z-50 md:w-full md:block text-primary overflow-scroll md:overflow-hidden text-lg bg-white">
+  <ul class="relative md:flex items-center justify-between md:max-w-3xl md:mx-auto px-4">
     {
       topNavLinks.map(({ text, href }) => (
         <li>
-          <a class="hover:text-link font-normal px-4 py-3 text-lg md:text-[0.9375rem] flex items-center" href={href}>
+          <a class="text-base font-normal px-4 py-3 md:text-[0.9375rem] flex items-center" href={href}>
             {text}
           </a>
         </li>
@@ -56,13 +56,13 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 {text}{' '}
                 <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
               </button>
-              <div class="dropdown-menu md:w-full left-0 md:absolute px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
+              <div class="dropdown-menu md:w-full left-0 md:fixed px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
                 <ul class="md:flex mx-auto gap-4">
                   {links.map(({ text: text2, links: children2 }) => (
                     <li class="">
                       <h4 class="text-primary font-bold ">{text2}</h4>
                       {children2?.length ? (
-                        <ul class="text-black pl-4 md:pl-0 font-medium md:min-w-[200px] md:block">
+                        <ul class="text-black pl-4 md:pl-0 font-medium md:min-w-[200px]">
                           {children2.map(({ text: text3, href: href3 }) => (
                             <li>
                               <a
