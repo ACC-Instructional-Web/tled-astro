@@ -24,3 +24,6 @@ pnpm-lock.yaml
 .astro
 
 *notes.txt
+
+# sst
+.sst
