@@ -92,7 +92,10 @@ a {
   color: var(--aw-color-primary);
   font-weight: 700;
 }
-
+.alignleft{
+  float: left;
+  margin: .5em 1em 1em 0;
+}
 /* To deprecated */
 
 .dd *:first-child {

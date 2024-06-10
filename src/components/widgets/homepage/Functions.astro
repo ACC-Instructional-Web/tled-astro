@@ -1,0 +1,32 @@
+---
+import { homeData } from '../../../endpoints.js';
+const res = await fetch(homeData);
+const [page] = await res.json();
+const columns = await [page.acf.layouts[0].column_1, page.acf.layouts[0].column_2, page.acf.layouts[0].column_3];
+---
+
+<style>
+  @media screen and (min-width: 768px) {
+    section {
+      background: white url('../../../assets/images/tled-group-photo.jpg') center no-repeat;
+    }
+  }
+  .functions :global(hr) {
+    float: none;
+    margin: 20px 0px;
+    width: 100%;
+    border-bottom: 2px solid var(--aw-color-primary);
+    opacity: 0.35;
+  }
+</style>
+<section class="w-full functions my-8">
+  <div class="sm:grid sm:grid-cols-3 justify-between text-base max-w-5xl mx-auto pb-12 pt-12">
+    {
+      columns.map((html) => (
+        <div class="md:max-w-80 md:w-64 lg:w-72 bg-white p-5">
+          <Fragment set:html={html} />
+        </div>
+      ))
+    }
+  </div>
+</section>
