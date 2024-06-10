@@ -37,9 +37,9 @@ console.log('alert_banner_content :>> ', alert_banner_content);
 </script>
 
 <div
-  class="announcement h-20 min-h-12 justify-between items-center text-sm bg-highlightmuted dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden gap-1 overflow-hidden relative text-ellipsis whitespace-nowrap"
+  class="announcement justify-between items-stretch content-center text-sm bg-highlightmuted dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden gap-1 overflow-hidden relative text-ellipsis whitespace-nowrap"
 >
-  <div class="bg-highlight py-2 px-4 max-w-12 h-full">
+  <div class="bg-highlight py-2 px-4 max-w-12">
     <svg
       class="w-full h-full"
       aria-hidden="true"
@@ -56,8 +56,11 @@ console.log('alert_banner_content :>> ', alert_banner_content);
       ></path></svg
     >
   </div>
-  <div class="text-wrap h-full flex justify-center items-center px-8 py-6" set:html={alert_banner_content} />
-  <div class="flex items-center h-full">
+  <div
+    class="text-neutral-700 text-wrap flex justify-center items-center px-8 py-3 my-1"
+    set:html={alert_banner_content}
+  />
+  <div class="flex items-center">
     <button class="close-btn bg-highlight py-2 px-3 h-full">X</button>
   </div>
 </div>
