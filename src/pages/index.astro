@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import RRCarousel from '~/components/widgets/homepage/Carousel/Carousel.jsx';
 import Intro from '~/components/widgets/homepage/Intro.astro';
 import CtaEvents from '~/components/widgets/homepage/CtaEvents.astro';
+import Functions from '~/components/widgets/homepage/Functions.astro';
 
 import { carouselData } from '~/endpoints';
 
@@ -23,9 +24,8 @@ const data = await response.json();
   <Intro />
 
   <CtaEvents />
-</Layout>
-
-<!-- <style is:global>
+  <Functions />
+  <!-- <style is:global>
   .carousel-root {
     position: relative;
     width: 100%;
@@ -238,3 +238,4 @@ const data = await response.json();
     text-align: left;
   }
 </style> -->
+</Layout>
