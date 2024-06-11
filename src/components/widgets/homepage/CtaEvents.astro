@@ -1,8 +1,39 @@
 ---
 import EventList from './EventList.astro';
+import { homeData } from '../../../endpoints.js';
+const res = await fetch(homeData);
+const [page] = await res.json();
+const ctas = await [page.acf.layouts[1].column_1, page.acf.layouts[2].column_1, page.acf.layouts[3].column_1];
 ---
 
-<div class="sm:columns-2 mx-auto max-w-4xl p-4 md:px-8">
-  <div class="flex-1">CTAs</div>
-  <div class="break-inside-avoid"><EventList length={10} /></div>
-</div>
+<style>
+  .cta-section :global(h2) {
+    font-size: 1.5rem;
+  }
+  .cta-section :global(hr) {
+    margin: 20px 0px;
+    width: 100%;
+    border-bottom: 2px solid var(--aw-color-primary);
+    opacity: 0.35;
+  }
+  .cta-section :global(hr):nth-of-type(3) {
+    display: none;
+  }
+</style>
+<section class="w-full my-8 px-5 max-w-5xl md:flex md:flex-row mx-auto cta-section">
+  <div class="text-base mx-auto md:flex-1">
+    {
+      ctas.map((html) => (
+        <>
+          <div>
+            <Fragment set:html={html} />
+          </div>
+          <hr class="pt-8" />
+        </>
+      ))
+    }
+  </div>
+  <div class="break-inside-avoid md:flex-1">
+    <EventList length={10} />
+  </div>
+</section>
