@@ -32,21 +32,22 @@ const { length } = Astro.props;
 // console.log('filteredEvents :>> ', filteredEvents);
 ---
 
-<div class="flex-1 px-6 py-3 bg-[#fef8e3]">
-  <h2 class="uppercase">Events &amp; Important Dates</h2>
+<div class="flex-1 p-8 bg-[#fef8e3]">
+  <h2 class="uppercase mb-4"><a href="/calendar">Events &amp; Important Dates</a></h2>
   <ul>
     {
       filteredEvents.length === 0 ? (
-        <li>No upcoming events</li>
+        <li class="mb-4 font-bold">No upcoming events</li>
       ) : (
         filteredEvents.slice(0, length - 1).map((event, i) => (
           // console.log(event);
-          <li>
+          <li class="ml-4 mb-4 font-bold">
             {event[1]}
             {event[6] ? <a href={event[6]}>{event[2]}</a> : <span>{event[2]}</span>}
           </li>
         ))
       )
     }
+    <a href="/calendar" class="">More Events ></a>
   </ul>
 </div>

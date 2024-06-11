@@ -13,6 +13,7 @@ const ctas = await [page.acf.layouts[1].column_1, page.acf.layouts[2].column_1, 
   .cta-section :global(hr) {
     margin: 20px 0px;
     width: 100%;
+    color: white;
     border-bottom: 2px solid var(--aw-color-primary);
     opacity: 0.35;
   }
@@ -20,15 +21,17 @@ const ctas = await [page.acf.layouts[1].column_1, page.acf.layouts[2].column_1, 
     display: none;
   }
 </style>
-<section class="w-full my-8 px-5 max-w-5xl md:flex md:flex-row mx-auto cta-section">
-  <div class="text-base mx-auto md:flex-1">
+<section
+  class="text-neutral-700 w-full my-8 px-5 max-w-5xl md:flex md:flex-row md:gap-x-8 lg:gap-x-16 mx-auto cta-section"
+>
+  <div class="text-base mx-auto md:flex-1 my-4">
     {
       ctas.map((html) => (
         <>
-          <div>
+          <div class="min-h-64 mt-8 cta-box">
             <Fragment set:html={html} />
           </div>
-          <hr class="pt-8" />
+          <hr />
         </>
       ))
     }
