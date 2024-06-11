@@ -3,7 +3,6 @@ import { eventsSheet } from '~/endpoints';
 const response = await fetch(eventsSheet);
 const data = await response.json();
 const events = data.values;
-// console.log('EVENTS: ', events);
 
 let filteredEvents = [];
 
