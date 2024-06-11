@@ -8,7 +8,7 @@ export const topnavData = `${endpoint}wp-api-menus/v2/menus/3`;
 
 export const footerData = `${endpoint}wp-api-menus/v2/menus/5`;
 
-export const pageContent = `${endpoint}wp/v2/pages?slug=`;
+export const pageData = `${endpoint}wp/v2/pages?slug=`;
 
 export const carouselData = `${endpoint}wp/v2/pages?slug=home`;
 

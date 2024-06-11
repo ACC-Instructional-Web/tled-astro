@@ -1,35 +1,40 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
-import type { CallToAction } from '~/types';
+// import type { CallToAction } from '~/types';
 
-export interface Props {
-  id?: string;
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  content?: string;
-  actions?: string | CallToAction[];
-  image?: string | unknown; // TODO: find HTMLElementProps
-}
+// export interface Props {
+//   id?: string;
+//   title?: string;
+//   subtitle?: string;
+//   tagline?: string;
+//   content?: string;
+//   actions?: string | CallToAction[];
+//   image?: string | unknown; // TODO: find HTMLElementProps
+// }
 
-const {
-  id,
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline,
-  content = await Astro.slots.render('content'),
-  actions = await Astro.slots.render('actions'),
-  image = await Astro.slots.render('image'),
-} = Astro.props;
+const { data } = Astro.props;
+// const {
+//   id,
+//   title = await Astro.slots.render('title'),
+//   subtitle = await Astro.slots.render('subtitle'),
+//   tagline,
+//   content = await Astro.slots.render('content'),
+//   actions = await Astro.slots.render('actions'),
+//   image = await Astro.slots.render('image'),
+// } = data;
+
+const { acf_fc_layout: layout, image_content: imgData } = data;
+const { id, url: image } = imgData;
+console.log('image :>> ', image);
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20">
-      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+    <div class="py-6">
+      <!-- <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
         {
           tagline && (
             <p
@@ -65,28 +70,30 @@ const {
           }
         </div>
         {content && <Fragment set:html={content} />}
-      </div>
-      <div>
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
+      </div> -->
+      {
+        // ######## Image Layout ######## //
+        layout === 'image' && (
+          <div>
+            {image && (
+              <div class="relative m-auto max-w-5xl">
                 <Image
                   class="mx-auto rounded-md w-full"
                   widths={[400, 768, 1024, 2040]}
                   sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                   loading="eager"
                   width={1024}
-                  height={576}
-                  {...image}
+                  height={426}
+                  src={image}
+                  alt="hero image"
                 />
-              )}
-            </div>
-          )
-        }
-      </div>
+              </div>
+            )}
+          </div>
+        )
+      }
+
+      <!-- ###### TODO: Breadcrumbs ####### -->
     </div>
   </div>
 </section>
