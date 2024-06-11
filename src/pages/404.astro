@@ -1,8 +1,12 @@
 ---
+<<<<<<< HEAD
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import Header from '../components/widgets/Header.astro';
 import Footer from '../components/widgets/Footer.astro';
+=======
+import Layout from '~/layouts/PageLayout.astro';
+>>>>>>> cc4b15f (Main content, sidebars, and ACF sections)
 
 const title = `Error 404`;
 ---
@@ -17,10 +21,6 @@ const title = `Error 404`;
           <span class="text-primary">404</span>
         </h2>
         <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But dont worry, you can find plenty of other things on our homepage.
-        </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
       </div>
     </div>
   </section>

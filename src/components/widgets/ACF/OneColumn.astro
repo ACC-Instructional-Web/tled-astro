@@ -1,0 +1,14 @@
+---
+const { layout } = Astro.props;
+const { heading, column_1, background, background_color } = layout;
+console.log('layout :>> ', layout);
+const bgColor = background === 'Color' ? `background-color: ${background_color};` : '';
+---
+
+<section class="clear-both w-full" style={bgColor}>
+  <div class="max-w-5xl mx-auto">
+    {heading && <h2 set:html={heading} />}
+    {column_1 && <div set:html={column_1} />}
+    <div class="clear-both"></div>
+  </div>
+</section>

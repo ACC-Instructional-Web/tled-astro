@@ -3,7 +3,6 @@ import { homeData } from '~/endpoints';
 const response = await fetch(homeData);
 const data = await response.json();
 const { alert_banner_content } = data[0].acf;
-console.log('alert_banner_content :>> ', alert_banner_content);
 ---
 
 <script>
@@ -15,7 +14,7 @@ console.log('alert_banner_content :>> ', alert_banner_content);
   const annBar = document.querySelector('.announcement');
 
   // Hide the notification if the cookie is set to false
-  if (notificationIsVisible !== 'false') {
+  if (annBar && notificationIsVisible !== 'false') {
     annBar.style.display = 'flex';
   }
 
