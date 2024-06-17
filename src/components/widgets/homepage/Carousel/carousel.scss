@@ -1,22 +1,31 @@
 .carousel-root * {
   height: fit-content;
 }
+.carousel-root{
+  max-height: 700px;
+  overflow: hidden;
+}
 
 .carousel-ctrl-btn {
   position: absolute;
   z-index: 2;
-  top: calc(50% - 15px);
+  top: calc(45% - 15px);
+  box-shadow: rgba(0, 0, 0, 0.3) -2px 2px;
   width: 30px;
   height: 30px;
   cursor: pointer;
   transition: opacity 0.3s;
+  background-color: white;
+  border-radius: 50%;
 }
 .legend{
   background:none !important;
   text-align: left !important;
   font-weight: 700;
   top:.5rem;
-  width:auto;
+  width:max-content !important;
+  opacity: 1 !important;
+  justify-self: center;
   .button{
     background-color: #4d1979;
     color: white;
