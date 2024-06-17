@@ -11,6 +11,36 @@
   cursor: pointer;
   transition: opacity 0.3s;
 }
+.legend{
+  background:none !important;
+  text-align: left !important;
+  font-weight: 700;
+  top:.5rem;
+  width:auto;
+  .button{
+    background-color: #4d1979;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  h3{
+    font-size: 3rem;
+    border-bottom: 4px solid #4d1979;
+    text-shadow: 2px 2px 0 #3d1e4a;
+  }
+  h2{
+    font-size: 1.5rem;
+    color:#4d1979;
+  }
+}
+
 
 .carousel-ctrl-btn:hover {
   opacity: 0.8;
@@ -23,11 +53,7 @@
   }
 }
 
-legend h3 {
-  border-bottom: 4px solid white;
-  border-bottom-color: var(--aw-primary-color);
-  text-shadow: 2px 2px 0 #3d1e4a;
-}
+
 
 #carousel-controls {
   display: flex;
