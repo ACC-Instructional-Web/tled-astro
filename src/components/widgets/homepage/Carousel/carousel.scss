@@ -1,5 +1,4 @@
 .carousel-root * {
-  height: fit-content;
 }
 .carousel-root{
   max-height: 700px;
@@ -8,6 +7,7 @@
 .slide{
   img{
     min-height: 400px !important;
+    max-height: 80vh;
     object-fit: cover;
   }
 
@@ -72,6 +72,12 @@
   .legend{
     left: 65vw !important;
   }
+  .slide{
+    img{
+      height: 80vh;
+
+    }
+  }
 }
 @media screen and (max-width: 768px) {
   .legend{
@@ -93,7 +99,7 @@
 
 #carousel-controls {
   position: relative;
-  top:-100px;
+  top:-50px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
