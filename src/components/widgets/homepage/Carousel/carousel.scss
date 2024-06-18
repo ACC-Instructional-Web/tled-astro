@@ -5,7 +5,13 @@
   max-height: 700px;
   overflow: hidden;
 }
+.slide{
+  img{
+    min-height: 400px !important;
+    object-fit: cover;
+  }
 
+}
 .carousel-ctrl-btn {
   position: absolute;
   z-index: 2;
@@ -19,13 +25,13 @@
   border-radius: 50%;
 }
 .legend{
+  max-width:1280px !important;
   background:none !important;
   text-align: left !important;
   font-weight: 700;
   top:.5rem;
   width:max-content !important;
   opacity: 1 !important;
-  justify-self: center;
   .button{
     background-color: #4d1979;
     color: white;
@@ -60,24 +66,50 @@
     width: 50px;
     height: 50px;
   }
+
+}
+@media screen and (min-width: 1024px) {
+  .legend{
+    left: 65vw !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .legend{
+    .button{
+      font-size: .7rem;
+    }
+   h3{
+    font-size: 1.5rem;
+   }
+   h4{
+    font-size: 1rem;
+
+   }
+  }
+  #carousel-controls {
+    // top: -150px !important;
+  }
 }
 
-
-
 #carousel-controls {
+  position: relative;
+  top:-100px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
   list-style: none;
+  padding-left: 10px;
   max-width: 75em;
   align-items: center;
   justify-content: center;
   // position: relative;
   // margin-top: -50px;
-
-  li:first-child button {
-    border-left-width: 8px;
+  li{
+    background-color: white;
+  }
+  li:first-of-type{
+    padding-left:8px !important;
   }
 
   .carousel-slider {
