@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import rightArrow from './right-arrow.webp';
-import leftArrow from './left-arrow.webp';
+import rightArrow from './TLED-arrow-right.svg';
+import leftArrow from './TLED-arrow-left.svg';
 import './carousel.scss';
 
 import Img from './Img';
