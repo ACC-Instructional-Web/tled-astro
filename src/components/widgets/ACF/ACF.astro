@@ -2,12 +2,17 @@
 import OneColumn from './OneColumn.astro';
 import TwoColumn from './TwoColumn.astro';
 import ThreeColumn from './ThreeColumn.astro';
-// import Accordion from './Accordion';
+import Accordion from './Accordion.astro';
+
 const { layouts } = Astro.props;
 
 // http://localhost:4321/faculty-support/services/faculty-evaluation/ ACF One Column
 
+// http://localhost:4321/teaching-excellence/teaching-champions/awards/ ACF Two Columns
+
 // http://localhost:4321/faculty-support/services/teaching-and-learning-centers/ ACF Three Columns
+
+// http://localhost:4321/faculty-support/course-development/copyright/ ACF Accordion
 ---
 
 <Fragment>
@@ -27,9 +32,9 @@ const { layouts } = Astro.props;
         if (acf_fc_layout === 'three_columns') {
           return <ThreeColumn layout={layout} />;
         }
-        // if (layout.acf_fc_layout === 'accordion') {
-        //   return <Accordion key={`acf_layout_${index}`} layout={layout} />;
-        // }
+        if (layout.acf_fc_layout === 'accordion') {
+          return <Accordion layout={layout} />;
+        }
 
         return null;
       })

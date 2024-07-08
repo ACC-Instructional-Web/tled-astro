@@ -1,5 +1,5 @@
 ---
-import { eventsSheet } from '~/endpoints';
+import { eventsSheet } from '~/config';
 const response = await fetch(eventsSheet);
 const data = await response.json();
 const events = data.values;

@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { trimSlash } from '~/utils/permalinks';
-import { dropdownData, topnavData } from '~/endpoints';
+import { dropdownData, topnavData } from '~/config';
 
 const response = await fetch(dropdownData);
 const data = await response.json();
