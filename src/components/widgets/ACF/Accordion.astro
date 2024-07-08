@@ -1,0 +1,76 @@
+---
+import cleanHTML from '~/utils/cleanHTML';
+const { layout } = Astro.props;
+const { accordion } = layout;
+---
+<script>
+  // Find our component DOM on the page.
+  const buttons = document.querySelectorAll('dt button');
+
+  // Add event listeners to fire confetti when a button is clicked.
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => (
+      button.parentElement.nextElementSibling.classList.toggle('hidden'),
+      button.querySelectorAll('svg').forEach((svg) => {
+        svg.classList.toggle('hidden');
+      })))
+  });
+</script>
+
+<dl class="my-10 space-y-6 divide-y divide-gray-900/10 max-w-5xl mx-auto">
+  {
+    accordion.map(({ title, description }) => (
+    <div class="pt-6">
+  <dt>
+    <!-- Expand/collapse question button -->
+    <button
+      type="button"
+      class="flex w-full items-start justify-between text-left text-gray-900"
+      aria-controls="faq-0"
+      aria-expanded="false"
+    >
+      <span class="text-base font-semibold leading-7" set:html={title}></span>
+      <span class="ml-6 flex h-7 items-center">
+        <!--
+              Icon when question is collapsed.
+
+              Item expanded: "hidden", Item collapsed: ""
+            -->
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+        </svg>
+        <!--
+              Icon when question is expanded.
+
+              Item expanded: "", Item collapsed: "hidden"
+            -->
+        <svg
+          class="hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
+        </svg>
+      </span>
+    </button>
+  </dt>
+  <dd class="mt-2 pr-12 hidden" id="faq-0">
+    <p class="text-base leading-7 text-gray-600" set:html={cleanHTML(description)}>
+    </p>
+  </dd>
+</div>
+    ))
+  }
+</dl>
+
+

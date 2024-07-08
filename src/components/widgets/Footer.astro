@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import { footerData } from '../../endpoints.js';
+import { footerData } from '../../config.js';
 const response = await fetch(footerData);
 const data = await response.json();
 

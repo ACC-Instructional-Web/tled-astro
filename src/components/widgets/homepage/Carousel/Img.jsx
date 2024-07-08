@@ -2,7 +2,6 @@ import React from 'react';
 
 const Img = (props) => {
   if (props.sizesProp) {
-    console.log('sizes :>> ', props.sizesProp);
     const sizesAtribute = '100vw';
     // '((min-width: 50em) and (max-width: 60em)) 50em,((min-width: 30em) and (max-width: 50em)) 30em, (max-width: 30em) 20em';
     return (

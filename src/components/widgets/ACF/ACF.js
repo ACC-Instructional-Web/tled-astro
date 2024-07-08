@@ -6,7 +6,7 @@ import Accordion from './Accordion';
 // import FlickityCarousel from '../Flickity/Flickity';
 // import { Container } from '../Grid/Grid';
 
-export default props => (
+export default (props) => (
   // console.log('layouts', props.layouts);
   <React.Fragment>
     {props.layouts &&

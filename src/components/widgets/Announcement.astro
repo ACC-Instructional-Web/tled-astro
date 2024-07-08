@@ -1,5 +1,5 @@
 ---
-import { homeData } from '~/endpoints';
+import { homeData } from '~/config';
 const response = await fetch(homeData);
 const data = await response.json();
 const { alert_banner_content } = data[0].acf;

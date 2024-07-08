@@ -1,5 +1,5 @@
 ---
-import { homeData } from '../../../endpoints.js';
+import { homeData } from '../../../config.js
 const res = await fetch(homeData);
 const [page] = await res.json();
 const columns = await [page.acf.layouts[0].column_1, page.acf.layouts[0].column_2, page.acf.layouts[0].column_3];

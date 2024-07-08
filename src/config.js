@@ -1,4 +1,6 @@
-const endpoint = 'https://instruction.austincc.edu/tled/wp-json/';
+export const siteUrl = 'https://instruction.austincc.edu/tled';
+
+const endpoint = `${siteUrl}/wp-json/`;
 
 export const dropdownData = `${endpoint}wp-api-menus/v2/menus/4`;
 

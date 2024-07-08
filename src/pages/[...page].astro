@@ -7,13 +7,11 @@ import SidebarLeft from '~/components/widgets/SidebarLeft.astro';
 import SidebarRight from '~/components/widgets/SidebarRight.astro';
 import ACF from '~/components/widgets/ACF/ACF.astro';
 
-import { pageData } from '~/endpoints';
+import { pageData } from '~/config';
 
 const { page } = Astro.params;
 
 const slug = page.split('?')[0].replace(/\/$/, '').split('/').pop();
-
-console.log('SLUG: ', slug);
 
 const response = await fetch(pageData + slug);
 
@@ -21,7 +19,8 @@ const data = await response.json();
 const pageContent = data[0];
 const { template = '', title, content, acf } = pageContent;
 
-console.log('pageContent :>> ', pageContent);
+// console.log('template :>> ', template);
+// console.log('pageContent :>> ', pageContent);
 
 if (!pageContent) {
   Astro.response.status = 404;
@@ -29,9 +28,9 @@ if (!pageContent) {
 }
 
 const pageTitle = pageContent ? title.rendered : null;
-console.log('pageTitle :>> ', pageTitle);
+// console.log('pageTitle :>> ', pageTitle);
 
-console.log('acf :>> ', acf);
+// console.log('acf :>> ', acf);
 const ACFData = pageContent ? acf : null;
 ---
 
@@ -45,7 +44,7 @@ const ACFData = pageContent ? acf : null;
   <div class="max-w-5xl mx-auto mb-8">
     {/* no sidebars */}
     {
-      template === '' && content.rendered && (
+      !template && content.rendered && (
         <>
           <h1>{pageTitle}</h1>
           <div set:html={content.rendered} />
