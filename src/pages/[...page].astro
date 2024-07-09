@@ -17,11 +17,14 @@ const response = await fetch(pageData + slug);
 
 const data = await response.json();
 const pageContent = data[0];
-// const { title, content, acf } = pageContent;
-const template = pageContent ? pageContent.template : '';
-const title = pageContent ? pageContent.title : '';
-const content = pageContent ? pageContent.content : '';
-const acf = pageContent ? pageContent.acf : '';
+
+if (!pageContent) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not found';
+}
+
+const { title, content, acf } = pageContent;
+const template = pageContent.template;
 
 // console.log('template :>> ', template);
 // console.log('pageContent :>> ', pageContent);
