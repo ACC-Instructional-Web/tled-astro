@@ -105,10 +105,19 @@ h3{
   margin-top: 2rem;
   margin-bottom: .5rem;
 }
+h3{
+  font-weight: 700;
+}
+h2{
+  font-weight: 700;
+}
+strong{
+  font-weight: 700;
+}
 h2{
   font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: .5rem;
+  padding-top: 2rem;
+  padding-bottom: .5rem;
 }
 .callout{
   position: relative;
@@ -118,11 +127,14 @@ h2{
   border-radius: 0;
   background-color: white;
   color: #2d2d2d;
-  font-weight: 700;
+  font-size: 1rem;
 }
 .callout h3{
   margin-top: 0;
   margin-bottom: 0;
+}
+.callout.secondary {
+  background-color: #eaeaea;
 }
 .primary{
   background-color: #cde4f3;
@@ -144,8 +156,37 @@ h2{
   cursor: pointer;
   background-color: var(--aw-color-primary);
   color: white;
-  font-weight: 500;
+  font-weight: 700;
 }
+p{
+  padding-bottom: 1rem;
+}
+body p{
+  line-height: 1.6rem;
+}
+tbody tr:nth-child(even) {
+  border-bottom: 0;
+  background-color: #f1f1f1;
+}
+tbody, tfoot {
+  border: 1px solid #f1f1f1;
+  background-color: #fefefe;
+}
+tbody td{
+  padding: 0.5rem 0.625rem 0.625rem;
+}
+body main li {
+  margin-bottom: 0.6rem;
+  list-style-type: disc;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1rem;
+  border-radius: 0;
+}
+
 /* To deprecated */
 
 .dd *:first-child {
