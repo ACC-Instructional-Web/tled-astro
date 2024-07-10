@@ -5,7 +5,7 @@ console.log('layout :>> ', layout);
 const bgColor = background === 'Color' ? `background-color: ${background_color};` : '';
 ---
 
-<section class="clear-both w-full" style={bgColor}>
+<section class="clear-both w-full pt-8 pb-8" style={bgColor}>
   <div class="max-w-5xl mx-auto">
     {heading && <h2 set:html={heading} />}
     <div class="md:columns-2 gap-8">

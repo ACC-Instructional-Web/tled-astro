@@ -6,8 +6,8 @@ const bgColor = background === 'Color' ? `background-color: ${background_color};
 ---
 
 <section class="clear-both w-full" style={bgColor}>
-  <div class="max-w-5xl mx-auto">
-    {heading && <h2 set:html={heading} />}
+  <div class="max-w-5xl mx-auto pt-8 pb-8">
+    {heading && <h2 set:html={heading} class="mb-2 text-2xl font-bold" />}
     {column_1 && <div set:html={column_1} />}
     <div class="clear-both"></div>
   </div>
