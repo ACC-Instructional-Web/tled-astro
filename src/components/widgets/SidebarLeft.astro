@@ -1,10 +1,11 @@
 ---
-const { content, sidebar, title } = Astro.props;
+const { content, sidebar, title, background, background_color } = Astro.props;
+const bgColor = background === 'Color' ? `background-color: ${background_color};` : '';
 ---
 
 <div class="md:flex">
-  <div class="basis-1/3">
-    <aside class="bg-gray-100 p-4" set:html={sidebar} />
+  <div class="basis-1/3" style={bgColor}>
+    <aside class="p-4" set:html={sidebar} />
   </div>
   <div class="basis-2/3">
     <h1 class="text-3xl font-bold">{title}</h1>

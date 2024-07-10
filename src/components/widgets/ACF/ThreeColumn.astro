@@ -6,7 +6,7 @@ const bgColor = background ? `background-color: ${background_color};` : '';
 ---
 
 <div class="clear-both pt-8 pb-8">
-  {heading && <h2 set:html={heading} class="max-w-5xl mx-auto" />}
+  {heading && <h2 set:html={heading} class="max-w-5xl mx-auto mb-2 text-2xl font-bold" />}
   <div class="md:columns-2 lg:columns-3 gap-8 max-w-5xl mx-auto">
     {column_1 && <div set:html={column_1} style={bgColor} />}
     {column_2 && <div set:html={column_2} style={bgColor} />}
