@@ -27,7 +27,7 @@ if (!pageContent) {
   Astro.response.statusText = 'Not found';
 }
 
-const pageTitle = pageContent ? title.rendered : null;
+const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
 // console.log('pageTitle :>> ', pageTitle);
 
 // console.log('acf :>> ', acf);
