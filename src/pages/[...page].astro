@@ -34,6 +34,14 @@ const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
 const ACFData = pageContent ? acf : null;
 ---
 
+<style>
+  .acc-bottom-border :global(h1) {
+    border-bottom: 2px solid rgba(77, 25, 121, 0.35);
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <Layout>
   {
     // ########## HERO ##########
@@ -41,7 +49,7 @@ const ACFData = pageContent ? acf : null;
       <div class="hero">{ACFData.hero_content[0].acf_fc_layout && <Hero data={ACFData.hero_content[0]} />}</div>
     )
   }
-  <div class="max-w-5xl mx-auto mb-8">
+  <div class="max-w-5xl mx-auto mb-8 acc-bottom-border">
     {/* no sidebars */}
     {
       !template && content.rendered && (
