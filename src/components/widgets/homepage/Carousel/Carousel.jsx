@@ -104,10 +104,10 @@ export default function RRCarousel({ carouselData }) {
           <li key={`thumbnail-${url}`}>
             <a
               href={page_url}
-              className={`carousel-control ${currentSlide === index ? ' active' : 'inactive'}`}
+              index={index}
+              className={`carousel-control ${currentSlide.currentSlide === index ? ' active' : 'inactive'}`}
               style={{ backgroundImage: `url('${url}')`, backgroundColor: colors[index] }}
               title={title}
-              index={index}
             >
               <div>{title}</div>
             </a>
