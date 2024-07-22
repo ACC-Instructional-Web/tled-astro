@@ -38,7 +38,7 @@ export default function RRCarousel({ carouselData }) {
     console.log('CALLED', sliderLoaded);
   };
   const changeCarousel = (slide) => {
-    setCurrentSlide({ currentSlide: slide });
+    setCurrentSlide(slide );
   };
 
   return (
@@ -105,7 +105,7 @@ export default function RRCarousel({ carouselData }) {
             <a
               href={page_url}
               index={index}
-              className={`carousel-control ${currentSlide.currentSlide === index ? ' active' : 'inactive'}`}
+              className={`carousel-control ${currentSlide === index ? ' active' : 'inactive'}`}
               style={{ backgroundImage: `url('${url}')`, backgroundColor: colors[index] }}
               title={title}
             >
