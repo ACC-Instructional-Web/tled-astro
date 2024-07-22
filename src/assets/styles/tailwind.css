@@ -135,9 +135,14 @@ h2{
   color: #2d2d2d;
   font-size: 1rem;
 }
+.callout ul{
+  list-style-position: outside;
+  margin-inline-start: 20px;
+}
 .callout h3{
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: 500;
 }
 .callout.secondary {
   background-color: #eaeaea;
