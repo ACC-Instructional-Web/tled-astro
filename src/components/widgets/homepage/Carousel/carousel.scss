@@ -1,48 +1,86 @@
 .carousel-root * {
-  height: fit-content;
 }
+.carousel-root{
+  max-height: 700px;
+  overflow: hidden;
+}
+.slide{
+  img{
+    min-height: 400px !important;
+    max-height: 80vh;
+    object-fit: cover;
+  }
 
+}
 .carousel-ctrl-btn {
   position: absolute;
   z-index: 2;
-  top: calc(50% - 15px);
+  top: calc(45% - 15px);
+  box-shadow: rgba(0, 0, 0, 0.3) -2px 2px;
   width: 30px;
   height: 30px;
   cursor: pointer;
   transition: opacity 0.3s;
+  background-color: white;
+  border-radius: 50%;
 }
+.legend{
+  max-width:1280px !important;
+  background:none !important;
+  text-align: left !important;
+  font-weight: 700;
+  top:.5rem;
+  width:max-content !important;
+  opacity: 1 !important;
+  .button{
+    background-color: #4d1979;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  h3{
+    font-size: 3rem;
+    border-bottom: 4px solid #4d1979;
+    text-shadow: 2px 2px 0 #3d1e4a;
+  }
+  h2{
+    font-size: 1.5rem;
+    color:#4d1979;
+  }
+}
+
 
 .carousel-ctrl-btn:hover {
   opacity: 0.8;
 }
 
-@media screen and (min-width: 768px) {
-  .carousel-ctrl-btn {
-    width: 50px;
-    height: 50px;
-  }
-}
-
-legend h3 {
-  border-bottom: 4px solid white;
-  border-bottom-color: var(--aw-primary-color);
-  text-shadow: 2px 2px 0 #3d1e4a;
-}
-
 #carousel-controls {
+  position: relative;
+  text-align: center;
+  top:-50px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
   list-style: none;
+  padding-left: 10px;
   max-width: 75em;
   align-items: center;
   justify-content: center;
   // position: relative;
   // margin-top: -50px;
-
-  li:first-child button {
-    border-left-width: 8px;
+  li{
+    background-color: white;
+  }
+  li:first-of-type{
+    padding-left:8px !important;
   }
 
   .carousel-slider {
@@ -119,12 +157,61 @@ legend h3 {
       transform: translate3d(0, 0.75rem, 0);
     }
   }
-
+  &:hover{
+    text-decoration: none;
+  }
+  div{
+    transition: all 0.5s ease-out;
+    &:hover{
+      text-shadow: 2px 2px 4px black;
+      transform: scale(1.1);
+    }
+  }
   img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .carousel-ctrl-btn {
+    width: 50px;
+    height: 50px;
+  }
+  #carousel-controls {
+    top: -13vh; //Some way to make this proportional to the img height would be nice, like the 55vh in the slide img
+  }
+}
+@media screen and (min-width: 1024px) {
+  .legend{
+    left: 65vw !important;
+  }
+  .slide{
+    img{
+      height: 55vh;
+
+    }
+  }
+  #carousel-controls {
+    top: -50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .legend{
+    .button{
+      font-size: .7rem;
+    }
+   h3{
+    font-size: 1.5rem;
+   }
+   h4{
+    font-size: 1rem;
+
+   }
+  }
+  #carousel-controls {
+    // top: -150px !important;
   }
 }
