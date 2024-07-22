@@ -11,13 +11,17 @@ import { pageData } from '~/config';
 
 const { page } = Astro.params;
 
-const slug = page.split('?')[0].replace(/\/$/, '').split('/').pop();
+const slug = page ? page.split('?')[0].replace(/\/$/, '').split('/').pop() : '';
 
 const response = await fetch(pageData + slug);
 
 const data = await response.json();
 const pageContent = data[0];
-const { template = '', title, content, acf } = pageContent;
+// const { title, content, acf } = pageContent;
+const template = pageContent ? pageContent.template : '';
+const title = pageContent ? pageContent.title : '';
+const content = pageContent ? pageContent.content : '';
+const acf = pageContent ? pageContent.acf : '';
 
 // console.log('template :>> ', template);
 // console.log('pageContent :>> ', pageContent);
@@ -27,7 +31,7 @@ if (!pageContent) {
   Astro.response.statusText = 'Not found';
 }
 
-const pageTitle = pageContent ? title.rendered : null;
+const pageTitle = title ? title.rendered : 'Page not found';
 // console.log('pageTitle :>> ', pageTitle);
 
 // console.log('acf :>> ', acf);
