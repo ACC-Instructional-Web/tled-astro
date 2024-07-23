@@ -1,0 +1,18 @@
+---
+export const prerender = false;
+
+import Layout from '~/layouts/PageLayout.astro';
+
+import { pageContent } from '~/endpoints';
+
+const response = await fetch(pageContent);
+const data = await response.json();
+
+console.log('data :>> ', data);
+
+const { page } = Astro.params;
+---
+
+<Layout>
+  {page}
+</Layout>
