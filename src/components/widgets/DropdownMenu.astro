@@ -14,10 +14,12 @@ const links = data.items.map(({ title, url, children }) => ({
     href: url2,
     links: children2?.map(({ title: title3, url: url3 }) => ({
       text: title3,
-      href: url3,
+      href: url3.replace('https://instruction.austincc.edu/tled', ''),
     })),
   })),
 }));
+
+console.log('links :>> ', links[1].links[0].links);
 
 const tnresponse = await fetch(topnavData);
 const tndata = await tnresponse.json();
