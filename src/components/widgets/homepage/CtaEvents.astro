@@ -24,11 +24,11 @@ const ctas = await [page.acf.layouts[1].column_1, page.acf.layouts[2].column_1, 
 <section
   class="text-neutral-700 w-full my-8 px-5 max-w-5xl md:flex md:flex-row md:gap-x-8 lg:gap-x-16 mx-auto cta-section"
 >
-  <div class="text-base mx-auto md:flex-1 my-4">
+  <div class="text-base mx-auto md:flex-1 mb-4">
     {
       ctas.map((html) => (
         <>
-          <div class="min-h-64 mt-8 cta-box">
+          <div class="my-8 cta-box">
             <Fragment set:html={html} />
           </div>
           <hr />
