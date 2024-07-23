@@ -1,6 +1,6 @@
 ---
 import EventList from './EventList.astro';
-import { homeData } from '../../../endpoints.js';
+import { homeData } from '../../../config.js';
 const res = await fetch(homeData);
 const [page] = await res.json();
 const ctas = await [page.acf.layouts[1].column_1, page.acf.layouts[2].column_1, page.acf.layouts[3].column_1];
