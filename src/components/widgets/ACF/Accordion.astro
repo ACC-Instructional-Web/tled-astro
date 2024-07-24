@@ -16,51 +16,55 @@ const { accordion } = layout;
       })))
   });
 </script>
-
-<dl class="my-10 space-y-6 divide-y divide-gray-900/10 max-w-5xl mx-auto">
+<!-- TO DO FIX HOVER STATE OF Accordions -->
+<dl class="my-10 space-y-6 divide-y divide-gray-900/10 max-w-5xl mx-auto px-8">
   {
     accordion.map(({ title, description }) => (
-    <div class="pt-6">
+    <div class="">
   <dt>
     <!-- Expand/collapse question button -->
     <button
       type="button"
-      class="flex w-full items-start justify-between text-left text-gray-900"
+      class="flex w-full items-start justify-between text-left text-gray-900 hover:bg-gray-300 py-6"
       aria-controls="faq-0"
       aria-expanded="false"
     >
-      <span class="text-base font-semibold leading-7" set:html={title}></span>
+      <span class="text-base leading-7" set:html={title}></span>
       <span class="ml-6 flex h-7 items-center">
         <!--
               Icon when question is collapsed.
 
               Item expanded: "hidden", Item collapsed: ""
             -->
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
+            <svg  class="h-8 w-8"
+          height="32px"
+          width="32px"
+          fill="#4d1979"
+          stroke-width="1"
+          stroke="#4d1979"
           aria-hidden="true"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
-        </svg>
+          viewBox="0 0 32 32"
+          border="none">
+
+            <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+            </svg>
         <!--
               Icon when question is expanded.
 
               Item expanded: "", Item collapsed: "hidden"
             -->
         <svg
-          class="hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
+          class="hidden h-8 w-8"
+          transform="matrix(1, 0, 0, -1, 0, 0)"
+          fill="#4d1979"
+          stroke-width="1"
+          stroke="#4d1979"
           aria-hidden="true"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
-        </svg>
+          viewBox="0 0 32 32"
+          border="none">
+
+            <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+            </svg>
       </span>
     </button>
   </dt>

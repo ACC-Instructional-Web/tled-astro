@@ -26,7 +26,10 @@ const { language, textDirection } = I18N;
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={textDirection}>
+  <!-- I removed this class="2xl:text-[20px]" from the html tag because
+   it is confusing developing with 2 different font sizes based on screen
+   size when the old site doesn't have this -->
   <head>
     <CommonMeta />
     <Favicons />
