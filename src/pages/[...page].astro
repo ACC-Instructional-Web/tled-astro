@@ -34,7 +34,7 @@ if (!pageContent) {
   Astro.response.statusText = 'Not found';
 }
 
-const pageTitle = title ? title.rendered : 'Page not found';
+const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
 // console.log('pageTitle :>> ', pageTitle);
 
 // console.log('acf :>> ', acf);
@@ -42,12 +42,20 @@ const ACFData = pageContent ? acf : null;
 const heroData = ACFData ? ACFData.hero_content : null;
 ---
 
+<style>
+  .acc-bottom-border :global(h1) {
+    border-bottom: 2px solid rgba(77, 25, 121, 0.35);
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <Layout>
   {
     // ########## HERO ##########
     heroData ? <div class="hero">{heroData[0].acf_fc_layout && <Hero data={heroData[0]} />}</div> : null
   }
-  <div class="max-w-5xl mx-auto mb-8">
+  <div class="max-w-5xl mx-auto mb-8 acc-bottom-border">
     {/* no sidebars */}
     {
       !template && content.rendered && (
