@@ -36,14 +36,13 @@ const pageTitle = title ? title.rendered : 'Page not found';
 
 // console.log('acf :>> ', acf);
 const ACFData = pageContent ? acf : null;
+const heroData = ACFData ? ACFData.hero_content : null;
 ---
 
 <Layout>
   {
     // ########## HERO ##########
-    ACFData.hero_content && (
-      <div class="hero">{ACFData.hero_content[0].acf_fc_layout && <Hero data={ACFData.hero_content[0]} />}</div>
-    )
+    heroData ? <div class="hero">{heroData[0].acf_fc_layout && <Hero data={heroData[0]} />}</div> : null
   }
   <div class="max-w-5xl mx-auto mb-8">
     {/* no sidebars */}

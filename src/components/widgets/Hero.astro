@@ -1,6 +1,5 @@
 ---
 import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
 // import type { CallToAction } from '~/types';
 
 // export interface Props {
@@ -24,7 +23,8 @@ const { data } = Astro.props;
 //   image = await Astro.slots.render('image'),
 // } = data;
 
-const { acf_fc_layout: layout, image_content: imgData } = data;
+const layout = data.acf_fc_layout;
+const imgData = data.image_content;
 const { id, url: image } = imgData;
 console.log('image :>> ', image);
 ---

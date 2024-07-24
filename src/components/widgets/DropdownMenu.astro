@@ -59,7 +59,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
               </button>
               <div class="dropdown-menu md:w-full left-0 md:fixed px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
-                <ul class="md:flex mx-auto gap-4">
+                <ul class="md:flex mx-auto md:px-8 gap-8 w-fit">
                   {links.map(({ text: text2, links: children2 }) => (
                     <li class="">
                       <h4 class="text-primary font-bold ">{text2}</h4>
@@ -74,7 +74,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                                 ]}
                                 href={href3}
                               >
-                                {text3}
+                                <span set:html={text3} />
                               </a>
                             </li>
                           ))}
