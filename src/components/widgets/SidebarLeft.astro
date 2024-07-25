@@ -1,6 +1,6 @@
 ---
-const { content, sidebar, title, background, background_color } = Astro.props;
-const bgColor = background === 'Color' ? `background-color: ${background_color};` : '';
+const { content, sidebar, title, sidebarColors } = Astro.props;
+const bgColor = sidebarColors.background_a === 'Color' ? `background-color: ${sidebarColors.background_color_a};` : '';
 ---
 
 <div class="md:flex">
