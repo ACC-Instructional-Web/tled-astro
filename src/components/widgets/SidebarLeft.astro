@@ -3,12 +3,12 @@ const { content, sidebar, title, sidebarColors } = Astro.props;
 const bgColor = sidebarColors.background_a === 'Color' ? `background-color: ${sidebarColors.background_color_a};` : '';
 ---
 
-<div class="md:flex">
-  <div class="basis-1/3" style={bgColor}>
-    <aside class="p-4" set:html={sidebar} />
-  </div>
+<div class="md:flex md:flex-row-reverse">
   <div class="basis-2/3 px-8">
     <h1 class="text-3xl font-bold uppercase">{title}</h1>
     <section set:html={content} />
+  </div>
+  <div class="basis-1/3 mx-8 lg:mx-0" style={bgColor}>
+    <aside class="p-4" set:html={sidebar} />
   </div>
 </div>
