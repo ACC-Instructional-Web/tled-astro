@@ -27,8 +27,8 @@ const whenExternalScripts = (items = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  // output: 'server',
-  output: 'hybrid',
+  output: 'server',
+  // output: 'hybrid',
   adapter: aws(),
 
   integrations: [

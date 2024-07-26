@@ -2,7 +2,9 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '../components/widgets/Header.astro';
 import Footer from '../components/widgets/Footer.astro';
+
 const title = 'Search Results';
+let results = {};
 
 const searchQuery = Astro.url.searchParams.get('search') || '';
 // const searchQuery = 'instruction';
@@ -16,20 +18,34 @@ const response = await fetch(
 const data = await response.json();
 console.log('DATA :>> ', data);
 
-// const { spelling } = data.data
-// if (spelling) {
-//   // console.log('Corrected Query: ', spelling.correctedQuery);
-//   const { correctedQuery } = spelling
-//   const suggestedResults = await axios.get(
-//     `https://www.googleapis.com/customsearch/v1/?q=${correctedQuery}&cx=${cx}&key=${googleApiKey}`
-//   )
+const errors = data?.error?.errors;
+if (errors) {
+  console.log('data.error.errors :>> ', data.error.errors);
+  // return { error: true };
+}
 
-//   return {
-//     results: suggestedResults.data.items,
-//     query: query.search,
-//     correctedQuery,
-//   }
-// }
+const spelling = data?.spelling;
+if (spelling) {
+  console.log('Corrected Query: ', spelling.correctedQuery);
+  const { correctedQuery } = spelling;
+  const suggestedResults = await fetch(
+    `https://www.googleapis.com/customsearch/v1/?q=${correctedQuery}&cx=${cx}&key=${googleApiKey}`
+  );
+  const suggestedData = await suggestedResults.json();
+  console.log('suggestedData :>> ', suggestedData);
+  results = {
+    items: suggestedData.items,
+    query: searchQuery,
+    correctedQuery,
+  };
+} else {
+  results = {
+    items: data.items,
+    query: searchQuery,
+    correctedQuery: null,
+  };
+}
+const { items, query, correctedQuery } = results;
 //   return { results: results.data.items, query: null, correctedQuery: null }
 // } catch (e) {
 //   return { error: true }
@@ -38,26 +54,28 @@ console.log('DATA :>> ', data);
 
 <Layout metadata={{ title }}>
   <Header />
-  <p>Top o the morning to ya</p>
+  <h1>Search Results</h1>
+  {
+    results?.correctedQuery && (
+      <div>
+        No results found for <span class="bold">"{results?.query}"</span>. Showing results for{' '}
+        <span class="bold">"{correctedQuery}"</span> instead.
+      </div>
+    )
+  }
+  {
+    items &&
+      items.map((item) => (
+        <div class="py-4">
+          <h2>
+            <a href={item.link}>{item.title}</a>
+          </h2>
+          <span set:html={item.htmlSnippet} />
+        </div>
+      ))
+  }
   <Footer />
 </Layout>
-<!-- {correctedQuery && (
-              <div>
-                No results found for <Query>"{query}"</Query>. Showing results for{' '}
-                <Query>"{correctedQuery}"</Query> instead.
-              </div>
-            )}
-            {results &&
-              results.map((result) => (
-                <SearchResult key={result.cacheId}>
-                  <Heading as="h2">
-                    <Link href={result.link} hovercolor="purple">
-                      <a>{result.title}</a>
-                    </Link>
-                  </Heading>
-                  {Parser(result.htmlSnippet)}
-                </SearchResult>
-              ))} -->
 <!-- 
 export default SearchPage
 
