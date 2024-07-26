@@ -1,0 +1,79 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '../components/widgets/Header.astro';
+import Footer from '../components/widgets/Footer.astro';
+const title = 'Search Results';
+
+const searchQuery = Astro.url.searchParams.get('search') || '';
+// const searchQuery = 'instruction';
+console.log('searchQuery: ', searchQuery);
+
+const googleApiKey = import.meta.env.GOOGLE_API_KEY;
+const cx = '761e1a557e63f4f37';
+const response = await fetch(
+  `https://www.googleapis.com/customsearch/v1/?q=${searchQuery}&cx=${cx}&key=${googleApiKey}`
+);
+const data = await response.json();
+console.log('DATA :>> ', data);
+
+// const { spelling } = data.data
+// if (spelling) {
+//   // console.log('Corrected Query: ', spelling.correctedQuery);
+//   const { correctedQuery } = spelling
+//   const suggestedResults = await axios.get(
+//     `https://www.googleapis.com/customsearch/v1/?q=${correctedQuery}&cx=${cx}&key=${googleApiKey}`
+//   )
+
+//   return {
+//     results: suggestedResults.data.items,
+//     query: query.search,
+//     correctedQuery,
+//   }
+// }
+//   return { results: results.data.items, query: null, correctedQuery: null }
+// } catch (e) {
+//   return { error: true }
+// }
+---
+
+<Layout metadata={{ title }}>
+  <Header />
+  <p>Top o the morning to ya</p>
+  <Footer />
+</Layout>
+<!-- {correctedQuery && (
+              <div>
+                No results found for <Query>"{query}"</Query>. Showing results for{' '}
+                <Query>"{correctedQuery}"</Query> instead.
+              </div>
+            )}
+            {results &&
+              results.map((result) => (
+                <SearchResult key={result.cacheId}>
+                  <Heading as="h2">
+                    <Link href={result.link} hovercolor="purple">
+                      <a>{result.title}</a>
+                    </Link>
+                  </Heading>
+                  {Parser(result.htmlSnippet)}
+                </SearchResult>
+              ))} -->
+<!-- 
+export default SearchPage
+
+const SearchResult = styled.div`
+  padding: 1rem 0;
+
+  a {
+    text-decoration: underline;
+  }
+
+  b {
+    color: purple;
+  }
+`
+
+const Query = styled.span`
+  color: purple;
+  font-weight: bold;
+` -->

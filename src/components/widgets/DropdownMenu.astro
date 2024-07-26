@@ -8,7 +8,7 @@ const data = await response.json();
 
 const links = data.items.map(({ title, url, children }) => ({
   text: title,
-  href: url,
+  href: url.replace('https://instruction.austincc.edu/tled', ''),
   links: children?.map(({ title: title2, url: url2, children: children2 }) => ({
     text: title2,
     href: url2,
@@ -19,7 +19,7 @@ const links = data.items.map(({ title, url, children }) => ({
   })),
 }));
 
-console.log('links :>> ', links[1].links[0].links);
+// console.log('links :>> ', links[1].links[0].links);
 
 const tnresponse = await fetch(topnavData);
 const tndata = await tnresponse.json();

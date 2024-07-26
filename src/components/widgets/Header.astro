@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Search from './Search.astro';
 import Logo from '~/components/Logo.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import DropdownMenu from './DropdownMenu.astro';
@@ -42,6 +43,7 @@ const { id = 'header', isSticky = false, isDark = false, isFullWidth = true, pos
   ]}
   {...id ? { id } : {}}
 >
+  <Search />
   <div
     class:list={[
       'relative z-0 text-default text-white py-3 px-3 md:px-6 mx-auto w-full bg-primarydark',
@@ -61,7 +63,17 @@ const { id = 'header', isSticky = false, isDark = false, isFullWidth = true, pos
     </a>
     <div class="ml-auto flex flex-row content-center pt-1 h-7">
       <a class="text-white" href="/calendar"><Icon class="w-7 h-7 pr-1" name="calendar" /></a>
-      <button class="ml-2" type="button"><Icon class="w-7 h-7" name="search" /></button>
+      <button id="search" class="ml-2" type="button"><Icon class="w-7 h-7" name="search" /></button>
+      <script>
+        const searchButton = document.getElementById('search');
+        const searchComponent = document.getElementById('searchWrapper');
+        searchButton &&
+          searchButton.addEventListener('click', () => {
+            console.log(searchComponent);
+            searchComponent && searchComponent.classList.toggle('md:flex');
+            searchComponent && searchComponent.classList.toggle('hidden');
+          });
+      </script>
       <span class="flex items-center md:hidden justify-end">
         <ToggleMenu />
       </span>
