@@ -6,8 +6,8 @@
     transition: height 0.2s linear;
   }
 </style>
-<div id="searchWrapper" class="hidden items-center justify-center min-h-44">
-  <form id="searchForm" class="max-w-2xl md:flex justify-between gap-8 text-white py-4">
+<div id="searchWrapper" class="hidden items-center justify-center min-h-44 gap-8">
+  <form id="tledSearchForm" class="max-w-2xl md:flex justify-between text-white py-4">
     <fieldset>
       <legend class="text-center md:text-left">Search TLED</legend>
       <label for="searchTLEDField" class="sr-only">TLED</label>
@@ -16,6 +16,9 @@
         <button id="tledButton" type="submit" class="button h-10"> Search TLED </button>
       </div>
     </fieldset>
+  </form>
+
+  <form id="accSearchForm" class="max-w-2xl md:flex justify-between gap-8 text-white py-4">
     <fieldset>
       <legend class="pt-4 sm:pt-0 text-center md:text-left">Search ACC</legend>
       <label for="searchACCField" class="sr-only">ACC</label>
@@ -26,20 +29,22 @@
     </fieldset>
   </form>
 </div>
-<script>
+<script is:inline>
+  const tledSearchForm = document.getElementById('tledSearchForm');
+  const accSearchForm = document.getElementById('accSearchForm');
   const searchTLEDField = document.getElementById('searchTLEDField');
   const searchACCField = document.getElementById('searchACCField');
-  const tledButton = document.getElementById('tledButton');
-  const accButton = document.getElementById('accButton');
 
-  tledButton &&
-    tledButton.addEventListener('click', () => {
-      searchTLEDField.value && location.assign(`/search?search=${searchTLEDField.value}`);
+  // on form submit
+  tledSearchForm &&
+    tledSearchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = `/search?search=${searchTLEDField.value}`;
     });
 
-  accButton &&
-    accButton.addEventListener('click', () => {
-      // searchWrapper.classList.add('hidden');
-      window.location = `http://www.austincc.edu/search?search=${searchACCField.value}`;
+  accSearchForm &&
+    accSearchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = `http://www.austincc.edu/search?search=${searchACCField.value}`;
     });
 </script>
