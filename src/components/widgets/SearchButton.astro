@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<script>
+  const searchButton = document.getElementById('search');
+  const searchComponent = document.getElementById('searchWrapper');
+  searchButton &&
+    searchButton.addEventListener('click', () => {
+      console.log('CLICKED');
+      console.log('searchComponent: >> ', searchComponent);
+      searchComponent && searchComponent.classList.toggle('md:flex');
+      searchComponent && searchComponent.classList.toggle('hidden');
+    });
+</script>
+<button id="search" class="ml-2" type="button"><Icon is:inline class="w-7 h-7" name="search" /></button>
