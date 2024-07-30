@@ -29,6 +29,7 @@ const imgData = data.image_content;
 imgData && console.log('imgData :>> ', imgData);
 // const { id, url: image } = imgData;
 // console.log('image :>> ', image);
+const image = imgData ? imgData.url : null;
 ---
 
 <!-- <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}> -->

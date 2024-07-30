@@ -5,7 +5,6 @@ import Logo from '~/components/Logo.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import DropdownMenu from './DropdownMenu.astro';
 
-import { getHomePermalink } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 
 interface Link {
@@ -64,12 +63,13 @@ const { id = 'header', isSticky = false, isDark = false, isFullWidth = true, pos
     <div class="ml-auto flex flex-row content-center pt-1 h-7">
       <a class="text-white" href="/calendar"><Icon class="w-7 h-7 pr-1" name="calendar" /></a>
       <button id="search" class="ml-2" type="button"><Icon class="w-7 h-7" name="search" /></button>
-      <script>
+      <script is:inline>
         const searchButton = document.getElementById('search');
         const searchComponent = document.getElementById('searchWrapper');
         searchButton &&
           searchButton.addEventListener('click', () => {
-            console.log(searchComponent);
+            console.log('CLICKED');
+            console.log('searchComponent: >> ', searchComponent);
             searchComponent && searchComponent.classList.toggle('md:flex');
             searchComponent && searchComponent.classList.toggle('hidden');
           });

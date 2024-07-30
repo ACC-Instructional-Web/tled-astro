@@ -29,7 +29,7 @@ export default function RRCarousel({ carouselData }) {
     info.page_url = tledRegex.test(slide.image_description)
       ? slide.image_description.match(tledRegex)[1]
       : slide.image_description.match(instructionRegex)[1];
-    console.log('PAGE_URL: ', info.page_url);
+    // console.log('PAGE_URL: ', info.page_url);
     slideData.push(info);
   });
 
@@ -38,7 +38,7 @@ export default function RRCarousel({ carouselData }) {
     console.log('CALLED', sliderLoaded);
   };
   const changeCarousel = (slide) => {
-    setCurrentSlide(slide );
+    setCurrentSlide(slide);
   };
 
   return (

@@ -1,6 +1,4 @@
 ---
-export const prerender = false;
-
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import SidebarLeft from '~/components/widgets/SidebarLeft.astro';
@@ -23,8 +21,10 @@ if (!pageContent) {
   Astro.response.statusText = 'Not found';
 }
 
-const { title, content, acf } = pageContent;
-const template = pageContent.template;
+const title = pageContent?.title;
+const content = pageContent?.content;
+const acf = pageContent?.acf;
+const template = pageContent?.template;
 
 // console.log('template :>> ', template);
 // console.log('pageContent :>> ', pageContent);
@@ -39,7 +39,7 @@ const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
 
 // console.log('acf :>> ', acf);
 const ACFData = pageContent ? acf : null;
-const heroData = ACFData ? ACFData.hero_content : null;
+const heroData = ACFData ? ACFData?.hero_content : null;
 ---
 
 <style>

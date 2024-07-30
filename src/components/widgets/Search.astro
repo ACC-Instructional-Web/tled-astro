@@ -1,9 +1,3 @@
----
-/*
-  based on https://www.mtu.edu/
-*/
----
-
 <style>
   #searchWrapper {
     background: black;
@@ -49,31 +43,3 @@
       window.location = `http://www.austincc.edu/search?search=${searchACCField.value}`;
     });
 </script>
-<!-- handleSubmit = event => {
-    event.preventDefault();
-    this.props.searchSubmitted();
-
-    if (this.fieldFocus === 'tled') {
-      // this.setState({ redirect: `/search/${this.searchTLEDField.current.value}` });
-      Router.push(`/search?search=${this.searchTLEDField.current.value}`);
-    }
-
-    if (this.fieldFocus === 'acc') {
-      window.location = `http://www.austincc.edu/search?search=${
-        this.searchACCField.current.value
-      }`;
-    }
-
-    return false;
-  };
-
-  setFocus = label => {
-    this.fieldFocus = label;
-  };
-
-  render() {
-    // console.log(this.props);
-    return (
-      
-    );
-  } -->

@@ -1,16 +1,16 @@
-import type { SSTConfig } from 'sst';
-import { AstroSite } from 'sst/constructs';
+import type { SSTConfig } from "sst";
+import { AstroSite } from "sst/constructs";
 
 export default {
   config(_input) {
     return {
-      name: 'tled-astro',
-      region: 'us-east-1',
+      name: "tled-astro",
+      region: "us-east-1",
     };
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
-      const site = new AstroSite(stack, 'site');
+      const site = new AstroSite(stack, "site");
       stack.addOutputs({
         url: site.url,
       });
