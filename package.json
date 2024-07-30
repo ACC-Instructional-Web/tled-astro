@@ -8,15 +8,15 @@
     "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
   "scripts": {
-    "dev": "sst bind astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
     "astro": "astro",
+    "build": "astro build",
+    "dev": "sst dev",
     "format": "prettier -w .",
     "lint:eslint": "eslint .",
+    "preview": "astro preview",
     "sst:deploy": "sst deploy --stage prod",
-    "sst:dev": "sst dev"
+    "sst:dev": "sst dev",
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.0",
@@ -55,7 +55,6 @@
     "@typescript-eslint/parser": "^7.7.1",
     "astro-compress": "^2.3.0",
     "astro-eslint-parser": "^1.0.1",
-    "astro-sst": "^2.43.4",
     "aws-cdk-lib": "2.142.1",
     "constructs": "10.3.0",
     "eslint": "8.57.0",
@@ -70,7 +69,6 @@
     "rehype-plugin-image-native-lazy-loading": "^1.2.0",
     "sass": "^1.77.8",
     "sharp": "0.33.3",
-    "sst": "^2.43.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",

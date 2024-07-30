@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import aws from 'astro-sst';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import sitemap from '@astrojs/sitemap';
@@ -22,8 +21,8 @@ const whenExternalScripts = (items = []) =>
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: aws(),
+  // output: 'server',
+  // adapter: aws(),
   integrations: [
     tailwind({
       applyBaseStyles: false,
