@@ -22,8 +22,6 @@ const whenExternalScripts = (items = []) =>
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: aws(),
   integrations: [
     tailwind({
       applyBaseStyles: false,
