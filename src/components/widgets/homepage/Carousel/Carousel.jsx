@@ -14,7 +14,7 @@ export default function RRCarousel({ carouselData }) {
   let [sliderLoaded, setSliderLoaded] = useState(false);
   const slideData = [];
 
-  // console.log('carouselData :>> ', carouselData);
+  console.log('carouselData :>> ', carouselData[0].id);
   const slideShowItems = carouselData[0].acf.hero_content[0].carousel_content;
   // console.log('SLIDESHOWITEMS: ', slideShowItems);
   slideShowItems.forEach(function (slide) {
@@ -26,9 +26,12 @@ export default function RRCarousel({ carouselData }) {
     info.url = slide.image_content.url;
     info.sizes = slide.image_content.sizes;
     info.description = { __html: slide.image_description };
+    // This is checks if it is Home (ID 226 or not)
+    if(carouselData[0].slug === "home") {
     info.page_url = tledRegex.test(slide.image_description)
       ? slide.image_description.match(tledRegex)[1]
       : slide.image_description.match(instructionRegex)[1];
+    }
     // console.log('PAGE_URL: ', info.page_url);
     slideData.push(info);
   });
@@ -94,12 +97,17 @@ export default function RRCarousel({ carouselData }) {
               decoding="async"
             /> */}
               <Img src={url} sizesProp={sizes} alt={alt} onLoad={toggleSliderLoaded} className="slide__image" />
+                {carouselData[0].slug === "home" && (
+                  <div className="legend" dangerouslySetInnerHTML={description}></div>
+                  )}
+                  {carouselData[0].slug != "home" && (
+                  <div className="carousel_stripe" dangerouslySetInnerHTML={description}></div>
+                  )}
 
-              <div className="legend" dangerouslySetInnerHTML={description}></div>
             </div>
           ))}
       </Carousel>
-      <ul id="carousel-controls">
+      {carouselData[0].slug === "home" && ( <ul id="carousel-controls">
         {slideData.map(({ url, page_url, title }, index) => (
           <li key={`thumbnail-${url}`}>
             <a
@@ -113,7 +121,8 @@ export default function RRCarousel({ carouselData }) {
             </a>
           </li>
         ))}
-      </ul>
+      </ul>)}
+
     </div>
   );
 }
