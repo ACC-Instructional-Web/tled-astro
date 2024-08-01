@@ -14,7 +14,8 @@
     "format": "prettier -w .",
     "lint:eslint": "eslint .",
     "preview": "astro preview",
-    "sst:deploy": "sst deploy --stage prod",
+    "vercel:deploy": "vercel --prod",
+    "vercel:staging": "vercel",
     "start": "astro dev"
   },
   "dependencies": {
