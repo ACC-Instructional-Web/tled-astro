@@ -12,7 +12,6 @@ const { alert_banner_content } = data[0].acf;
 
   const closeBtn = document.querySelector('.close-btn');
   const annBar = document.querySelector('.announcement');
-
   // Hide the notification if the cookie is set to false
   if (annBar && notificationIsVisible !== 'false') {
     annBar.style.display = 'flex';
@@ -21,6 +20,7 @@ const { alert_banner_content } = data[0].acf;
   closeBtn
     ? closeBtn.addEventListener('click', () => {
         hideNotification();
+        setMenuHeight();
       })
     : null;
 
@@ -31,6 +31,14 @@ const { alert_banner_content } = data[0].acf;
     });
     if (annBar) {
       annBar.style.display = 'none';
+    }
+  }
+  function setMenuHeight() {
+    const topOfMenu = document.querySelector('header');
+    const dropdownMenu = document.querySelectorAll('.dropdown-menu');
+    for (let i = 0; i < dropdownMenu.length; i++) {
+      dropdownMenu[i].style.top =
+        `${topOfMenu.getBoundingClientRect().height + topOfMenu.getBoundingClientRect().top}px`;
     }
   }
 </script>
