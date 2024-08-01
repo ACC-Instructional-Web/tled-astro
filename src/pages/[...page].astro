@@ -69,7 +69,12 @@ const heroData = ACFData ? ACFData?.hero_content : null;
     {/* sidebar left only */}
     {
       template === 'page-sidebar-left.php' && (
-        <SidebarLeft content={content.rendered} sidebar={ACFData.sidebar_left} title={pageTitle} />
+        <SidebarLeft
+          content={content.rendered}
+          sidebar={ACFData.sidebar_left}
+          sidebarColors={ACFData.sidebar_left_background}
+          title={pageTitle}
+        />
       )
     }
     {/*  End sidebar left only */}
@@ -77,7 +82,12 @@ const heroData = ACFData ? ACFData?.hero_content : null;
     {/* sidebar right only */}
     {
       template === 'page-sidebar-right.php' && (
-        <SidebarRight content={content.rendered} sidebar={ACFData.sidebar_right} title={pageTitle} />
+        <SidebarRight
+          content={content.rendered}
+          sidebar={ACFData.sidebar_right}
+          sidebarColors={ACFData.sidebar_right_background}
+          title={pageTitle}
+        />
       )
     }
     {/*  End sidebar right only */}

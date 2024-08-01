@@ -197,9 +197,10 @@ table {
   margin-bottom: 1rem;
   border-radius: 0;
 }
-
+dl ul{
+  margin-inline-start: 20px;
+}
 /* To deprecated */
-
 .dd *:first-child {
   margin-top: 0;
 }
