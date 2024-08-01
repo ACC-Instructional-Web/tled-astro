@@ -27,3 +27,4 @@ pnpm-lock.yaml
 
 # sst
 .sst
+.vercel
