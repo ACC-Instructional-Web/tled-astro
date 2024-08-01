@@ -1,5 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
+import RRCarousel from '~/components/widgets/homepage/Carousel/Carousel.jsx';
+
 // import type { CallToAction } from '~/types';
 
 // export interface Props {
@@ -12,7 +14,7 @@ import Image from '~/components/common/Image.astro';
 //   image?: string | unknown; // TODO: find HTMLElementProps
 // }
 
-const { data } = Astro.props;
+const { data, allData } = Astro.props;
 // const {
 //   id,
 //   title = await Astro.slots.render('title'),
@@ -24,7 +26,6 @@ const { data } = Astro.props;
 // } = data;
 
 const layout = data.acf_fc_layout;
-console.log('layout :>> ', layout);
 const imgData = data.image_content;
 imgData && console.log('imgData :>> ', imgData);
 // const { id, url: image } = imgData;
@@ -93,6 +94,14 @@ const image = imgData ? imgData.url : null;
                 />
               </div>
             )}
+          </div>
+        )
+      }
+      {
+        // ######## Carousel Layout ######## //
+        layout === 'carousel' && (
+          <div>
+            <RRCarousel client:load carouselData={allData} />
           </div>
         )
       }

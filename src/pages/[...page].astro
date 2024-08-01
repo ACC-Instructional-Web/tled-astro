@@ -37,7 +37,6 @@ if (!pageContent) {
 const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
 // console.log('pageTitle :>> ', pageTitle);
 
-// console.log('acf :>> ', acf);
 const ACFData = pageContent ? acf : null;
 const heroData = ACFData ? ACFData?.hero_content : null;
 ---
@@ -53,7 +52,7 @@ const heroData = ACFData ? ACFData?.hero_content : null;
 <Layout>
   {
     // ########## HERO ##########
-    heroData ? <div class="hero">{heroData[0].acf_fc_layout && <Hero data={heroData[0]} />}</div> : null
+    heroData ? <div class="hero">{heroData[0].acf_fc_layout && <Hero data={heroData[0]} allData={data} />}</div> : null
   }
   <div class="max-w-5xl mx-auto mb-8 acc-bottom-border">
     {/* no sidebars */}

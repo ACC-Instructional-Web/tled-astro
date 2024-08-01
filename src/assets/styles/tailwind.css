@@ -197,9 +197,12 @@ table {
   margin-bottom: 1rem;
   border-radius: 0;
 }
+<<<<<<< HEAD
 dl ul{
   margin-inline-start: 20px;
 }
+=======
+>>>>>>> 7a32bfc (Moved styling over the scss file, implemented validation based on slug name, changed min-height)
 /* To deprecated */
 .dd *:first-child {
   margin-top: 0;
