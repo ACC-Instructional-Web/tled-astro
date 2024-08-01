@@ -14,7 +14,6 @@ export default function RRCarousel({ carouselData }) {
   let [sliderLoaded, setSliderLoaded] = useState(false);
   const slideData = [];
 
-  console.log('carouselData :>> ', carouselData[0].id);
   const slideShowItems = carouselData[0].acf.hero_content[0].carousel_content;
   // console.log('SLIDESHOWITEMS: ', slideShowItems);
   slideShowItems.forEach(function (slide) {
@@ -38,14 +37,15 @@ export default function RRCarousel({ carouselData }) {
 
   const toggleSliderLoaded = () => {
     setSliderLoaded((sliderLoaded = true));
-    console.log('CALLED', sliderLoaded);
+    // console.log('CALLED', sliderLoaded);
   };
   const changeCarousel = (slide) => {
     setCurrentSlide(slide);
   };
 
   return (
-    <div className="flex flex-col relative">
+    <div className={`${carouselData[0].slug != "home"  ? "wp-page-carousel flex flex-col relative" : "flex flex-col relative"}`}
+>
       <Carousel
         showThumbs={false}
         showStatus={false}

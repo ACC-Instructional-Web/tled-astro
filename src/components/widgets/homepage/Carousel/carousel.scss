@@ -4,13 +4,19 @@
   max-height: 700px;
   overflow: hidden;
 }
+
 .slide{
   img{
     min-height: 300px !important;
-    max-height: 80vh;
     object-fit: cover;
+    object-position: center top;
   }
-
+}
+.wp-page-carousel{
+  max-height:400px;
+  img{
+    max-height:400px;
+  }
 }
 .carousel-ctrl-btn {
   position: absolute;
