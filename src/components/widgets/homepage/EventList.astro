@@ -1,6 +1,6 @@
 ---
-import { eventsSheet } from '~/config';
-const response = await fetch(eventsSheet);
+import { calendarEventsData } from '~/config';
+const response = await fetch(calendarEventsData);
 const data = await response.json();
 const events = data.values;
 
@@ -10,6 +10,7 @@ if (!events) {
   return;
 }
 
+// Remove the header row
 events.shift();
 
 filteredEvents = events

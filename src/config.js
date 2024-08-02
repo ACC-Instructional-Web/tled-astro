@@ -14,4 +14,6 @@ export const pageData = `${endpoint}wp/v2/pages?slug=`;
 
 export const carouselData = `${endpoint}wp/v2/pages?slug=home`;
 
-export const calendarData = `https://sheets.googleapis.com/v4/spreadsheets/1feRPiGXCX19MZofZ2LgLgYbvxpGJYFByhJ6ZAlOkWiM/values/CurrentEvents?key=${import.meta.env.GOOGLE_API_KEY}`;
+export const eventsSheet = `https://sheets.googleapis.com/v4/spreadsheets/1feRPiGXCX19MZofZ2LgLgYbvxpGJYFByhJ6ZAlOkWiM/values/CurrentEvents?key=${import.meta.env.GOOGLE_API_KEY}`;
+
+export const calendarEventsData = `https://sheets.googleapis.com/v4/spreadsheets/1feRPiGXCX19MZofZ2LgLgYbvxpGJYFByhJ6ZAlOkWiM/values/CurrentEvents?key=${import.meta.env.GOOGLE_API_KEY}`;
