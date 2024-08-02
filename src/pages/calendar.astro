@@ -3,11 +3,11 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '../components/widgets/Header.astro';
 import Footer from '../components/widgets/Footer.astro';
 import CalendarGrid from '../components/widgets/Calendar/CalendarGrid.jsx';
-import { calendarData } from '~/config';
+import { calendarEventsData } from '~/config';
 
 const title = 'Events Calendar';
 
-const response = await fetch(calendarData);
+const response = await fetch(calendarEventsData);
 const data = await response.json();
 ---
 

@@ -1,92 +1,78 @@
 ---
 import decode from 'unescape';
-import { replaceUrl } from '../../helpers';
+import { replaceUrl } from '~/utils/utils.ts';
+import { breadcrumbUrl } from '~/config';
 
-const fetchBreadcrumbs = (endpoint, id) =>
-  new Promise((resolve, reject) => {
-    Axios.get(`${endpoint}bcn/v1/post/${id}`)
-      .catch(function(error) {
-        console.error('breadcrumb error', error);
-        reject();
-      })
-      .then(response => {
-        console.log('breadcrumb data', response.data.itemListElement);
-        // console.log('breadcrumb data', response.data.itemListElement.slice(1));
-        let breadcrumbData;
+const { id } = Astro.props;
 
-        breadcrumbData = response.data.itemListElement.slice(1);
-        breadcrumbData[0].item.name = 'Home';
-        breadcrumbData[0].item['@id'] = '/';
+const response = await fetch(`${breadcrumbUrl}${id}`);
+const data = await response.json();
+// console.log('breadcrumb data', data.itemListElement);
+// console.log('breadcrumb data', data.itemListElement.slice(1));
+let breadcrumbData;
 
-        const cleanedCrumbUrls = breadcrumbData.map(crumb => {
-          crumb.item['@id'] = replaceUrl(crumb.item['@id']);
-          crumb.item.name = decode(crumb.item.name);
-          return crumb;
-        });
+breadcrumbData = data.itemListElement.slice(1);
+breadcrumbData[0].item.name = 'Home';
+breadcrumbData[0].item['@id'] = '/';
 
-        resolve(cleanedCrumbUrls);
-      });
-  });
-
-export { fetchBreadcrumbs };
-
+const cleanedCrumbUrls = breadcrumbData.map((crumb) => {
+  crumb.item['@id'] = replaceUrl(crumb.item['@id']);
+  crumb.item.name = decode(crumb.item.name);
+  return crumb;
+});
 ---
 
-import React from 'react';
-import styled from 'styled-components';
-
-export default function Breadcrumbs(props) {
-  // console.log('breadcrumbs', props.data);
-  return (
-    <Breadcrumb role="navigation" aria-label="Breadcrumb">
-      <ul role="menu">
-        {/* data from WordPress */}
-        {props.data &&
-          props.data[0].item &&
-          props.data.map(({ item }, index, arr) => {
-            // last item in list
-            if (index + 1 === arr.length) {
-              return (
-                <li key={`breadcrumb-${index}`} role="menuitem" aria-current="page" className="current">
-                  {item.name}
-                </li>
-              );
-            }
-
-            // anything else
+<nav role="navigation" aria-label="Breadcrumb">
+  <ul role="menu">
+    {/* data from WordPress */}
+    {
+      cleanedCrumbUrls &&
+        cleanedCrumbUrls[0].item &&
+        cleanedCrumbUrls.map(({ item }, index, arr) => {
+          // last item in list
+          if (index + 1 === arr.length) {
             return (
-              <li key={`breadcrumb-${index}`} role="menuitem">
-                <a href={item['@id']}>{item.name}</a>
+              <li role="menuitem" aria-current="page" className="current">
+                {item.name}
               </li>
             );
-          })}
+          }
 
-        {/* data from js object */}
-        {props.data &&
-          !props.data[0].item &&
-          props.data.map((item, index, arr) => {
-            // last item in list
-            if (index + 1 === arr.length) {
-              return (
-                <li key={`breadcrumb-${index}`} role="menuitem" aria-current="page" className="current">
-                  {item.title}
-                </li>
-              );
-            }
+          // anything else
+          return (
+            <li role="menuitem">
+              <a href={item['@id']}>{item.name}</a>
+            </li>
+          );
+        })
+    }
 
-            // anything else
+    {/* data from js object */}
+    {
+      cleanedCrumbUrls &&
+        !cleanedCrumbUrls[0].item &&
+        cleanedCrumbUrls.map((item, index, arr) => {
+          // last item in list
+          if (index + 1 === arr.length) {
             return (
-              <li key={`breadcrumb-${index}`} role="menuitem">
-                <a href={item.url}>{item.title}</a>
+              <li key={`breadcrumb-${index}`} role="menuitem" aria-current="page" className="current">
+                {item.title}
               </li>
             );
-          })}
-      </ul>
-    </Breadcrumb>
-  );
-}
+          }
 
-const Breadcrumb = styled.nav`
+          // anything else
+          return (
+            <li key={`breadcrumb-${index}`} role="menuitem">
+              <a href={item.url}>{item.title}</a>
+            </li>
+          );
+        })
+    }
+  </ul>
+</nav>
+
+<!-- const Breadcrumb = styled.nav`
   padding: 1rem 0 0;
 
   ul {
@@ -116,4 +102,4 @@ const Breadcrumb = styled.nav`
   .current {
     font-weight: 400;
   }
-`;
+`; -->

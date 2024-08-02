@@ -50,3 +50,5 @@ export const toUiAmount = (amount: number) => {
 
   return value;
 };
+
+export const replaceUrl = (str, decorator = '') => str.replace(/https:\/\/instruction.austincc.edu\/tled/gi, decorator);

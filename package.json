@@ -38,6 +38,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-responsive-carousel": "^3.2.23",
+    "unescape": "^1.0.1",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
