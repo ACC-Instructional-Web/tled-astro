@@ -1,0 +1,51 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '../components/widgets/Header.astro';
+import Footer from '../components/widgets/Footer.astro';
+import CalendarGrid from '../components/widgets/Calendar/CalendarGrid.jsx';
+import { calendarData } from '~/config';
+
+const title = 'Events Calendar';
+
+const response = await fetch(calendarData);
+const data = await response.json();
+---
+
+<Layout metadata={{ title }}>
+  <Header />
+  <h1>Search Results</h1>
+  <div>
+    <a href="https://form.asana.com/?k=xqP6aUnpCk3PeMgTe7J1vA&d=88303944259432" class="button" target="_blank">
+      Submit Event
+    </a>
+    <a
+      href="https://instruction.austincc.edu/tledupdates/2019/08/20/how-to-overlap-accs-faculty-events-google-calendar-with-your-acc-google-calendar/"
+      class="button"
+      target="_blank"
+    >
+      Add Faculty Events Google Calendar
+    </a>
+  </div>
+  <CalendarGrid client:load calendarData={data} />
+</Layout>
+<Footer />
+
+<!-- 
+export default SearchPage
+
+const SearchResult = styled.div`
+  padding: 1rem 0;
+
+  a {
+    text-decoration: underline;
+  }
+
+  b {
+    color: purple;
+  }
+`
+
+const Query = styled.span`
+  color: purple;
+  font-weight: bold;
+` -->
