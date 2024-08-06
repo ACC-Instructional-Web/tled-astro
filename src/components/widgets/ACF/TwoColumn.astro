@@ -8,7 +8,7 @@ const bgColor = background === 'Color' ? `background-color: ${background_color};
   <div class="max-w-5xl mx-auto px-8">
     {heading && <h2 set:html={heading} class="mb-2 text-2xl font-bold" />}
     <div class="md:columns-2 gap-8">
-      {column_1 && <div set:html={column_1} />}
+      {column_1 && <div class="md:break-after-column" set:html={column_1} />}
       {column_2 && <div set:html={column_2} />}
     </div>
     <div class="clear-both"></div>

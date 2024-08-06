@@ -58,12 +58,12 @@ const heroData = ACFData ? ACFData?.hero_content : null;
 
   <Breadcrumbs id={pageContent.id} />
 
-  <div class="max-w-5xl mx-auto mb-8 acc-bottom-border">
+  <div class="max-w-5xl mx-auto mb-8 acc-bottom-border px-8">
     {/* no sidebars */}
     {
       !template && content.rendered && (
         <>
-          <h1>{pageTitle}</h1>
+          <h1 class="text-3xl font-bold uppercase">{pageTitle}</h1>
           <div set:html={content.rendered} />
         </>
       )
