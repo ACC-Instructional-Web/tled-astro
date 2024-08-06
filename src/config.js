@@ -17,3 +17,8 @@ export const pageData = `${endpoint}wp/v2/pages?slug=`;
 export const carouselData = `${endpoint}wp/v2/pages?slug=home`;
 
 export const calendarEventsData = `https://sheets.googleapis.com/v4/spreadsheets/1feRPiGXCX19MZofZ2LgLgYbvxpGJYFByhJ6ZAlOkWiM/values/CurrentEvents?key=${import.meta.env.GOOGLE_API_KEY}`;
+
+// ### REPORTS ###
+export const reportsID = '1VD4KvNmgoBBoVo2ukDLtD_CNFiYnrWcw2CPRIb2Ba3M';
+export const apiKey = `${import.meta.env.GOOGLE_API_KEY}`;
+export const reportsArchiveData = `https://sheets.googleapis.com/v4/spreadsheets/${reportsID}?key=${import.meta.env.GOOGLE_API_KEY}`;

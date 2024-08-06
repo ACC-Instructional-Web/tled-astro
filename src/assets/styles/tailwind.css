@@ -203,3 +203,19 @@ table {
 .dd *:first-child {
   margin-top: 0;
 }
+
+button.tag {
+  display: inline-block;
+  padding: 6px;
+  margin: 4px;
+  /* background: ${(props) => (props.active ? 'rgb(40, 62, 85)' : 'rgb(193, 196, 197)')};
+  color: ${(props) => (props.active ? 'white' : '#424242')}; */
+  border-radius: 4px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background 0.25s ease-out;
+
+  /* &:hover {
+    background: ${(props) => (props.active ? '#4e79a6' : '#efefef')};
+  } */
+}

@@ -1,0 +1,75 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import ReportsTest from '~/components/widgets/Reports/Reports.jsx';
+import { reportsArchiveData, reportsID, apiKey } from '~/config';
+
+const title = 'Reports';
+
+const archivesResponse = await fetch(reportsArchiveData);
+const archivesData = await archivesResponse.json();
+// console.log('data :>> ', data.sheets);
+const sheetTitles = archivesData.sheets
+  .map((sheet) => sheet.properties.title)
+  .filter((title) => title !== 'Sheet Order');
+console.log(sheetTitles);
+
+// Get the selected report from the URL or default to the latest report
+const selectedReport = Astro.url.searchParams.get('report') || sheetTitles[0];
+
+const fetchReport = async (sheetTitle) => {
+  const reportResponse = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${reportsID}/values/${sheetTitle}?key=${apiKey}`
+  );
+  const reportData = await reportResponse.json();
+  // console.log('Response: ', reportData);
+  const reports = reportData.values;
+  reports.shift();
+  // console.log('reports :>> ', reports);
+  return reports;
+};
+
+const currentReport = await fetchReport(encodeURI(selectedReport));
+---
+
+<Layout metadata={{ title }}>
+  <Header />
+
+  <div class="w-4/5 m-auto">
+    <!-- <Breadcrumbs data={breadcrumbData} /> -->
+    <h1>TLED EXECUTIVE REPORT</h1>
+    <h3 class="text-lg py-4">Timely updates for enhanced internal communication.</h3>
+    <div class="flex">
+      <div>
+        <p>View reports by date:</p>
+        <!-- <select onChange={this.handleSheetSelect}> -->
+        <select id="archives">
+          <option value={encodeURI(sheetTitles[0])}>Current Report</option>
+          {sheetTitles.map((title) => <option value={encodeURI(title)}>{title}</option>)}
+        </select>
+        <script is:inline>
+          // get the select element and add an event listener
+          const select = document.getElementById('archives');
+          select.addEventListener('change', (e) => {
+            // get the selected value
+            const selected = e.target.value;
+            console.log('selected :>> ', selected);
+            window.location.href = `?report=${selected}`;
+          });
+        </script>
+      </div>
+      <div id="subscribe">
+        <p>Subscribe to receive monthly reports via email:</p>
+        <a target="_blank" href="https://lp.constantcontact.com/su/ZAfZ2hs/TLEDreport">
+          <button type="button" class="button"> Subscribe </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- <ReportsGrid client:load /> -->
+    <ReportsTest currentReport={currentReport} selectedReport={selectedReport} client:load />
+  </div>
+</Layout>
+
+<Footer />
