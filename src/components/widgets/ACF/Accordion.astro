@@ -16,65 +16,66 @@ const { accordion, heading } = layout;
       })))
   });
 </script>
-<h2 class="mt-6 max-w-5xl mx-auto w-full px-8 lg:px-0">{heading}</h2>
-<dl class="mb-10 divide-y divide-gray-900/10 max-w-5xl mx-auto w-full border-b border-gray-900/10 px-8 lg:px-0 accordion">
-  {
-    accordion.map(({ title, description }) => (
-    <div class="">
-  <dt>
-    <!-- Expand/collapse question button -->
-    <button
-      type="button"
-      class="flex w-full items-start hover:bg-gray-200 justify-between text-left text-gray-900 p-6"
-      aria-controls="faq-0"
-      aria-expanded="false"
-    >
-      <span class="text-base leading-7" set:html={title}></span>
-      <span class="ml-6 flex h-7 items-center">
-        <!--
-              Icon when question is collapsed.
+<section>
+  <h2 class="mt-6 max-w-5xl mx-auto w-full px-8 lg:px-0">{heading}</h2>
+  <dl class="mb-10 divide-y divide-gray-900/10 max-w-5xl mx-auto w-full border-b border-gray-900/10 px-8 lg:px-0 accordion">
+    {
+      accordion.map(({ title, description }) => (
+      <div class="">
+    <dt>
+      <!-- Expand/collapse question button -->
+      <button
+        type="button"
+        class="flex w-full items-start hover:bg-gray-200 justify-between text-left text-gray-900 p-6"
+        aria-controls="faq-0"
+        aria-expanded="false"
+      >
+        <span class="text-base leading-7" set:html={title}></span>
+        <span class="ml-6 flex h-7 items-center">
+          <!--
+                Icon when question is collapsed.
 
-              Item expanded: "hidden", Item collapsed: ""
-            -->
-            <svg  class="h-8 w-8"
-          height="32px"
-          width="32px"
-          fill="#4d1979"
-          stroke-width="1"
-          stroke="#4d1979"
-          aria-hidden="true"
-          viewBox="0 0 32 32"
-          border="none">
+                Item expanded: "hidden", Item collapsed: ""
+              -->
+              <svg  class="h-8 w-8"
+            height="32px"
+            width="32px"
+            fill="#4d1979"
+            stroke-width="1"
+            stroke="#4d1979"
+            aria-hidden="true"
+            viewBox="0 0 32 32"
+            border="none">
 
-            <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-            </svg>
-        <!--
-              Icon when question is expanded.
+              <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+              </svg>
+          <!--
+                Icon when question is expanded.
 
-              Item expanded: "", Item collapsed: "hidden"
-            -->
-        <svg
-          class="hidden h-8 w-8"
-          transform="matrix(1, 0, 0, -1, 0, 0)"
-          fill="#4d1979"
-          stroke-width="1"
-          stroke="#4d1979"
-          aria-hidden="true"
-          viewBox="0 0 32 32"
-          border="none">
+                Item expanded: "", Item collapsed: "hidden"
+              -->
+          <svg
+            class="hidden h-8 w-8"
+            transform="matrix(1, 0, 0, -1, 0, 0)"
+            fill="#4d1979"
+            stroke-width="1"
+            stroke="#4d1979"
+            aria-hidden="true"
+            viewBox="0 0 32 32"
+            border="none">
 
-            <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-            </svg>
-      </span>
-    </button>
-  </dt>
-  <dd class="pl-6 pr-12 hidden pt-4 pb-8" id="faq-0">
-    <div class="text-base leading-7 text-gray-600" set:html={cleanHTML(description)}>
-    </div>
-  </dd>
-</div>
-    ))
-  }
-</dl>
-
+              <path  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+              </svg>
+        </span>
+      </button>
+    </dt>
+    <dd class="pl-6 pr-12 hidden pt-4 pb-8" id="faq-0">
+      <div class="text-base leading-7 text-gray-600" set:html={cleanHTML(description)}>
+      </div>
+    </dd>
+  </div>
+      ))
+    }
+  </dl>
+</section>
 
