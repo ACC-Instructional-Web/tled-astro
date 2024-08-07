@@ -54,31 +54,44 @@ const { items, query, correctedQuery } = results;
 // }
 ---
 
+<style>
+  h1 {
+    border-bottom: 2px solid rgba(77, 25, 121, 0.35);
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <Layout metadata={{ title }}>
   <Header />
-  <h1>Search Results</h1>
-  {
-    results?.correctedQuery && (
-      <div>
-        No results found for <span class="bold">"{results?.query}"</span>. Showing results for{' '}
-        <span class="bold">"{correctedQuery}"</span> instead.
-      </div>
-    )
-  }
-  {
-    items &&
-      items.map((item) => (
-        <div class="py-4">
-          <h2>
-            <a href={item.link}>{item.title}</a>
-          </h2>
-          <span set:html={item.htmlSnippet} />
+  <section class="max-w-5xl mx-auto px-8 w-full">
+    <p class="text-[11px] pt-4 uppercase">
+      <a class="mr-3" href="~/">Home</a> / <span class="ml-3">Search Results</span>
+    </p>
+    <h1 class="text-3xl font-bold uppercase py-8" ">Search Results</h1>
+    {
+      results?.correctedQuery && (
+        <div>
+          No results found for <span class="bold">"{results?.query}"</span>. Showing results for{' '}
+          <span class="bold">"{correctedQuery}"</span> instead.
         </div>
-      ))
-  }
+      )
+    }
+    {
+      items &&
+        items.map((item) => (
+          <div class="py-4">
+            <h2 class="underline">
+              <a href={item.link}>{item.title}</a>
+            </h2>
+            <span set:html={item.htmlSnippet} />
+          </div>
+        ))
+    }
+  </section>
   <Footer />
 </Layout>
-<!-- 
+<!--
 export default SearchPage
 
 const SearchResult = styled.div`
