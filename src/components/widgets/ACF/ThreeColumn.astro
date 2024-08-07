@@ -1,86 +1,16 @@
 ---
+import cleanHTML from '~/utils/cleanHTML';
 const { layout } = Astro.props;
 const { heading, column_1, column_2, column_3, background, background_color } = layout;
 const bgColor = background ? `background-color: ${background_color};` : '';
 ---
 
 <div class="clear-both pt-8 pb-8">
-  {heading && <h2 set:html={heading} class="max-w-5xl mx-auto mb-2 text-2xl font-bold px-8" />}
+  {heading && <h2 set:html={cleanHTML(heading)} class="max-w-5xl mx-auto mb-2 text-2xl font-bold px-8" />}
   <div class="md:columns-2 lg:columns-3 gap-8 max-w-5xl mx-auto px-8">
-    {column_1 && <div set:html={column_1} style={bgColor} class="md:break-after-column" />}
-    {column_2 && <div set:html={column_2} style={bgColor} class="md:break-after-column" />}
-    {column_3 && <div set:html={column_3} style={bgColor} />}
+    {column_1 && <div set:html={cleanHTML(column_1)} style={bgColor} class="md:break-after-column" />}
+    {column_2 && <div set:html={cleanHTML(column_2)} style={bgColor} class="md:break-after-column" />}
+    {column_3 && <div set:html={cleanHTML(column_3)} style={bgColor} />}
   </div>
   <div class="clear-both"></div>
 </div>
-
-<!-- <Section layout={props.layout}>
-      <Container>
-        {props.layout.heading && (
-          <Row>
-            <Col width={1}>
-              <Heading
-                as="h2"
-                caps={false}
-                underline={false}
-                color={props.layout.text_mode}
-              >
-                {props.layout.heading}
-              </Heading>
-            </Col>
-          </Row>
-        )}
-        <Row mx={[0, '-1rem']}>
-          <Col width={[1, 1 / 3]} px={[0, '1rem']}>
-            {props.layout.background_a === 'Color' ? (
-              <Box
-                bg={
-                  props.layout.background_a === 'Color'
-                    ? props.layout.background_color_a
-                    : null
-                }
-                p="1rem"
-              >
-                <Parser>{props.layout.column_1}</Parser>
-              </Box>
-            ) : (
-              <Parser>{props.layout.column_1}</Parser>
-            )}
-          </Col>
-          <Col width={[1, 1 / 3]} px={[0, '1rem']}>
-            {props.layout.background_b === 'Color' ? (
-              <Box
-                bg={
-                  props.layout.background_b === 'Color'
-                    ? props.layout.background_color_b
-                    : null
-                }
-                p="1rem"
-              >
-                <Parser>{props.layout.column_2}</Parser>
-              </Box>
-            ) : (
-              <Parser>{props.layout.column_2}</Parser>
-            )}
-          </Col>
-          <Col width={[1, 1 / 3]} px={[0, '1rem']}>
-            {props.layout.background_c === 'Color' ? (
-              <Box
-                bg={
-                  props.layout.background_c === 'Color'
-                    ? props.layout.background_color_c
-                    : null
-                }
-                p="1rem"
-              >
-                <Parser>{props.layout.column_3}</Parser>
-              </Box>
-            ) : (
-              <Parser>{props.layout.column_3}</Parser>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    </Section>
-  );
-}; -->
