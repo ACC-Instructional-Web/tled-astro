@@ -74,7 +74,6 @@
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
-  list-style: none;
   padding-left: 10px;
   max-width: 75em;
   align-items: center;
@@ -83,6 +82,7 @@
   // margin-top: -50px;
   li {
     background-color: white;
+    list-style: none;
   }
   li:first-of-type {
     padding-left: 8px !important;
