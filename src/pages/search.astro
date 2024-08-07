@@ -61,17 +61,22 @@ const { items, query, correctedQuery } = results;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+  .search-results :global(b) {
+    color: purple;
+  }
 </style>
 <Layout metadata={{ title }}>
   <Header />
-  <section class="max-w-5xl mx-auto px-8 w-full">
+  <section class="max-w-5xl mx-auto px-8 w-full search-results">
     <p class="text-[11px] pt-4 uppercase">
-      <a class="mr-3" href="~/">Home</a> / <span class="ml-3">Search Results</span>
+      <a class="mr-3" href="~/">Home</a>
+      <span class="text-slate-400">/</span>
+      <span class="ml-3">Search Results</span>
     </p>
     <h1 class="text-3xl font-bold uppercase py-8" ">Search Results</h1>
     {
       results?.correctedQuery && (
-        <div>
+        <div class="py-4">
           No results found for <span class="bold">"{results?.query}"</span>. Showing results for{' '}
           <span class="bold">"{correctedQuery}"</span> instead.
         </div>
