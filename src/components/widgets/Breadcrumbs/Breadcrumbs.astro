@@ -22,7 +22,37 @@ const cleanedCrumbUrls = breadcrumbData.map((crumb) => {
 });
 ---
 
-<nav role="navigation" aria-label="Breadcrumb">
+<style>
+  ul {
+    margin: 0 0 1rem 0;
+    list-style: none;
+    display: flex;
+  }
+  li {
+    /* padding: 1rem 0 0; */
+    font-size: 0.6875rem;
+    color: #0a0a0a;
+    cursor: default;
+    text-transform: uppercase;
+  }
+
+  a {
+    font-weight: 600;
+  }
+
+  a:after {
+    position: relative;
+    margin: 0 0.75rem;
+    opacity: 1;
+    content: '/';
+    color: #cacaca;
+  }
+
+  .current {
+    font-weight: 400;
+  }
+</style>
+<nav role="navigation" aria-label="Breadcrumb" class="mx-auto max-w-5xl pb-8">
   <ul role="menu">
     {/* data from WordPress */}
     {
@@ -71,35 +101,3 @@ const cleanedCrumbUrls = breadcrumbData.map((crumb) => {
     }
   </ul>
 </nav>
-
-<!-- const Breadcrumb = styled.nav`
-  padding: 1rem 0 0;
-
-  ul {
-    margin: 0 0 1rem 0;
-    list-style: none;
-    display: flex;
-  }
-  li {
-    font-size: 0.6875rem;
-    color: #0a0a0a;
-    cursor: default;
-    text-transform: uppercase;
-  }
-
-  a {
-    font-weight: 400;
-  }
-
-  a:after {
-    position: relative;
-    margin: 0 0.75rem;
-    opacity: 1;
-    content: '/';
-    color: #cacaca;
-  }
-
-  .current {
-    font-weight: 400;
-  }
-`; -->
