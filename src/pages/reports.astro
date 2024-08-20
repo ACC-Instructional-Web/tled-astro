@@ -33,15 +33,26 @@ const fetchReport = async (sheetTitle) => {
 const currentReport = await fetchReport(encodeURI(selectedReport));
 ---
 
+<style>
+  .bottom-border {
+    border-bottom: 2px solid rgba(77, 25, 121, 0.35);
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
 <Layout metadata={{ title }}>
   <Header />
 
-  <div class="w-4/5 m-auto">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-xs py-4">
+      <a href="/">Home</a> / Reports
+    </div>
     <!-- <Breadcrumbs data={breadcrumbData} /> -->
-    <h1>TLED EXECUTIVE REPORT</h1>
-    <h3 class="text-lg py-4">Timely updates for enhanced internal communication.</h3>
-    <div class="flex">
-      <div>
+    <h1 class="text-3xl font-bold uppercase bottom-border">TLED EXECUTIVE REPORT</h1>
+    <h3 class="text-lg py-4 font-normal">Timely updates for enhanced internal communication.</h3>
+    <div class="flex gap-x-8 pb-4">
+      <div class="basis-1/2 bg-gray-200 py-12 px-8 text-center">
         <p>View reports by date:</p>
         <!-- <select onChange={this.handleSheetSelect}> -->
         <select id="archives">
@@ -59,7 +70,7 @@ const currentReport = await fetchReport(encodeURI(selectedReport));
           });
         </script>
       </div>
-      <div id="subscribe">
+      <div id="subscribe" class="basis-1/2 bg-slate-200 py-12 px-8 text-center">
         <p>Subscribe to receive monthly reports via email:</p>
         <a target="_blank" href="https://lp.constantcontact.com/su/ZAfZ2hs/TLEDreport">
           <button type="button" class="button"> Subscribe </button>
