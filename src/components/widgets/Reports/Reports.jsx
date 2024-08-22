@@ -56,8 +56,8 @@ export default function Reports({ currentReport, selectedReport }) {
       {tags.length > 0 && (
         <>
           <p>Click on the tags to filter reports by category:</p>
-          <div className="flex lg:block">
-            <div className="basis-3 mb-3">
+          <div className="md:flex block gap-3 items-start">
+            <div className="basis-5/6 mb-3 shrink-0">
               {tags.map((tag, i) => (
                 <button
                   className={activeTags.includes(tag) ? 'tag active': 'tag'}
@@ -71,10 +71,12 @@ export default function Reports({ currentReport, selectedReport }) {
             </div>
             {/* Search Form */}
             <TagSearch
+              className="basis-1/6 grow-0"
               tags={tags}
               toggleTag={toggleTag}
               searchResults={searchResults}
               setSearchResults={setSearchResults}
+              activeTags={activeTags}
             />
           </div>
         </>
@@ -88,13 +90,13 @@ export default function Reports({ currentReport, selectedReport }) {
                     // If the report has a URL, display it as a link
                     report[4] ? (
                       <a href={report[4]} target="_blank">
-                        <h2 className="font-bold text-xl mb-2">{report[2]}</h2>
+                        <h2 className="font-bold text-2xl mb-2">{report[2]}</h2>
                       </a>
                     ) : (
-                      <h2 className="font-bold text-2xl mb-2">{report[2]}</h2>
+                      <h2 className="font-bold text-2xl mb-2 text-neutral-800">{report[2]}</h2>
                     )
                   }
-                  <h3 className="font-bold text-lg">{report[1]}</h3>
+                  <h3 className="font-bold text-[20px] text-neutral-800">{report[1]}</h3>
                   <p>{report[3]}</p>
                   {report[5] && (
                     <div>
