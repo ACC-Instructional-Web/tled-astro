@@ -60,7 +60,7 @@ export default function Reports({ currentReport, selectedReport }) {
             <div className="basis-3 mb-3">
               {tags.map((tag, i) => (
                 <button
-                  className="tag"
+                  className={activeTags.includes(tag) ? 'tag active': 'tag'}
                   key={i}
                   onClick={() => toggleTag(tag)}
                   //   active={activeTags.includes(tag)}
@@ -82,24 +82,24 @@ export default function Reports({ currentReport, selectedReport }) {
       <div className="md:columns-2 gap-8">
         {activeReports
           ? activeReports.map((report) => (
-              <div className="bg-white shadow-md rounded-lg overflow-hidden">
+              <div className="bg-slate-100 shadow-md overflow-hidden border mb-4">
                 <div className="p-4">
                   {
                     // If the report has a URL, display it as a link
                     report[4] ? (
                       <a href={report[4]} target="_blank">
-                        <h3 className="font-bold text-xl mb-2">{report[2]}</h3>
+                        <h2 className="font-bold text-xl mb-2">{report[2]}</h2>
                       </a>
                     ) : (
-                      <h3 className="font-bold text-xl mb-2">{report[2]}</h3>
+                      <h2 className="font-bold text-2xl mb-2">{report[2]}</h2>
                     )
                   }
-                  <p className="text-gray-700 text-base">{report[1]}</p>
+                  <h3 className="font-bold text-lg">{report[1]}</h3>
                   <p>{report[3]}</p>
                   {report[5] && (
                     <div>
                       {report[5].split(' ').map((tag) => (
-                        <span className="inline-block bg-slate-200 mx-1">{tag}</span>
+                        <span className="tag">{tag}</span>
                       ))}
                     </div>
                   )}

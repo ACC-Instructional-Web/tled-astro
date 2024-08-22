@@ -55,7 +55,7 @@ const currentReport = await fetchReport(encodeURI(selectedReport));
       <div class="basis-1/2 bg-gray-200 py-12 px-8 text-center">
         <p>View reports by date:</p>
         <!-- <select onChange={this.handleSheetSelect}> -->
-        <select id="archives">
+        <select class="p-2 border border-neutral-300" id="archives">
           <option value={encodeURI(sheetTitles[0])}>Current Report</option>
           {sheetTitles.map((title) => <option value={encodeURI(title)}>{title}</option>)}
         </select>
@@ -70,7 +70,7 @@ const currentReport = await fetchReport(encodeURI(selectedReport));
           });
         </script>
       </div>
-      <div id="subscribe" class="basis-1/2 bg-slate-200 py-12 px-8 text-center">
+      <div id="subscribe" class="basis-1/2 bg-slate-100 py-12 px-8 text-center">
         <p>Subscribe to receive monthly reports via email:</p>
         <a target="_blank" href="https://lp.constantcontact.com/su/ZAfZ2hs/TLEDreport">
           <button type="button" class="button"> Subscribe </button>
