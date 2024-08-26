@@ -71,7 +71,7 @@ export default function CalendarGrid({ calendarData }) {
   return (
     <div>
       {tags.length > 0 && (
-        <div className="mt-6 mb-2.5">
+        <div className="mt-6 mb-8">
           <p>Click on the tags below to filter the workshops by topic:</p>
           {tags.map((tag, i) => (
             <button
@@ -86,7 +86,7 @@ export default function CalendarGrid({ calendarData }) {
         </div>
       )}
 
-      <div className="flex flex-wrap justify-around -mx-4">
+      <div className="flex flex-wrap justify-around gap-4">
         {activeEvents.length > 0
           ? activeEvents.map((event, i) => <Event event={event} key={i} />)
           : events.map((event, i) => <Event event={event} key={i} />)}

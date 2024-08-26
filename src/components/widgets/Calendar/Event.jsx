@@ -21,7 +21,7 @@ const Event = (props) => {
   const title = event[2];
   const link = event[6];
   return (
-    <div className="min-w-40 m-4 cursor-pointer basis-1/4">
+    <div className="min-w-40 cursor-pointer basis-1/5 mb-4">
       <div style={{ backgroundImage: `url(${bgImg})` }} className="bg-cover h-0 w-full flex pb-[100%] mb-4">
         {event[7] && <span>{event[7]}</span>}
       </div>
@@ -30,7 +30,7 @@ const Event = (props) => {
       {tags && (
         <div>
           {tags.map((tag) => (
-            <div className="inline-block py-0.5 px-1.5 m-1 text-sm" key={tag}>
+            <div className="tag" key={tag}>
               {tag}
             </div>
           ))}
