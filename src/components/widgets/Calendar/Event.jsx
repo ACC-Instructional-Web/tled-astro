@@ -21,12 +21,12 @@ const Event = (props) => {
   const title = event[2];
   const link = event[6];
   return (
-    <div className="min-w-40 cursor-pointer basis-1/5 mb-4">
+    <div className="min-w-40 cursor-pointer basis-1/5 mb-4 transition ease-in-out hover:scale-95 duration-500">
       <div style={{ backgroundImage: `url(${bgImg})` }} className="bg-cover h-0 w-full flex pb-[100%] mb-4">
         {event[7] && <span>{event[7]}</span>}
       </div>
       {event[1]}
-      <h1>{link ? <a href={link}>{title}</a> : <span>{title}</span>}</h1>
+      <p class="pb-2">{link ? <a href={link}>{title}</a> : <span>{title}</span>}</p>
       {tags && (
         <div>
           {tags.map((tag) => (

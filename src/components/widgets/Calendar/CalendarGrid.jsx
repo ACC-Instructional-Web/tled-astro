@@ -75,9 +75,10 @@ export default function CalendarGrid({ calendarData }) {
           <p>Click on the tags below to filter the workshops by topic:</p>
           {tags.map((tag, i) => (
             <button
-              className="tag"
               key={i}
               onClick={() => toggleTag(tag)}
+              className={activeTags.includes(tag) ? 'tag active': 'tag'}
+
               // active={activeTags.includes(tag)}
             >
               {tag}
