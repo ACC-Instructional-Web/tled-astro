@@ -14,7 +14,7 @@ export default function TagSearch({ tags, activeTags, toggleTag, searchResults, 
   }
 
   return (
-    <form className="flex flex-col justify-center border-2 p-2" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex flex-col justify-center border-2 p-2 mb-4" onSubmit={(e) => e.preventDefault()}>
       <input className="p-2" type="text" placeholder="Search for Tag" onChange={handleSearch} />
       <div className="relative">
         {searchResults.length > 0 && (

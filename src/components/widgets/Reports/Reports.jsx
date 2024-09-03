@@ -56,8 +56,8 @@ export default function Reports({ currentReport, selectedReport }) {
       {tags.length > 0 && (
         <>
           <p>Click on the tags to filter reports by category:</p>
-          <div className="md:flex block gap-3 items-start">
-            <div className="basis-5/6 mb-3 shrink-0">
+          <div className="lg:flex block gap-3 items-start ">
+            <div className="basis-3/4 mb-3 shrink-0">
               {tags.map((tag, i) => (
                 <button
                   className={activeTags.includes(tag) ? 'tag active': 'tag'}
