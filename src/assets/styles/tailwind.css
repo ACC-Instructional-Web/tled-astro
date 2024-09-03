@@ -137,10 +137,9 @@ h2 {
   list-style-position: outside;
   margin-inline-start: 20px;
 }
-section ul{
-  margin-left:1.5rem;
+section ul {
+  margin-left: 1.5rem;
   list-style-position: outside;
-
 }
 .callout h3 {
   margin-top: 0;
@@ -160,7 +159,6 @@ section ul{
   margin: 0 0 1rem 0;
   padding: 0.85em 1em;
   border: 1px solid transparent;
-  border-radius: 0;
   transition:
     background-color 0.25s ease-out,
     color 0.25s ease-out;
@@ -195,13 +193,13 @@ tbody td {
 body main li {
   margin-bottom: 0.6rem;
 }
-section ul{
-  margin-left:1.5rem;
+section ul {
+  margin-left: 1.5rem;
   list-style-position: outside;
   list-style-type: disc;
 }
-section ol{
-  margin-left:1.5rem;
+section ol {
+  margin-left: 1.5rem;
   list-style-position: outside;
   list-style-type: decimal;
 }
@@ -212,10 +210,10 @@ table {
   margin-bottom: 1rem;
   border-radius: 0;
 }
-.accordion dd p:first-of-type{
+.accordion dd p:first-of-type {
   padding: 0rem;
 }
-.accordion dd img{
+.accordion dd img {
   margin-right: 1.3rem;
   margin-top: 0rem;
   margin-bottom: 1.5rem;
@@ -225,18 +223,33 @@ table {
   margin-top: 0;
 }
 
-button.tag {
+.tag {
   display: inline-block;
-  padding: 6px;
+  padding: 2px 6px;
   margin: 4px;
   /* background: ${(props) => (props.active ? 'rgb(40, 62, 85)' : 'rgb(193, 196, 197)')};
   color: ${(props) => (props.active ? 'white' : '#424242')}; */
   border-radius: 4px;
   font-size: 0.8em;
   cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: rgb(203, 206, 207);
   transition: background 0.25s ease-out;
 
   /* &:hover {
     background: ${(props) => (props.active ? '#4e79a6' : '#efefef')};
   } */
+}
+.tag:hover {
+  background-color: rgb(239, 239, 239);
+}
+.tag.active {
+  background: rgb(40, 62, 85);
+  color: white;
+}
+h1.acc-bottom-border-line {
+  border-bottom: 2px solid rgba(77, 25, 121, 0.35);
+  padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }

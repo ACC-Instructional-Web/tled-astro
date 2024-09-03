@@ -13,24 +13,33 @@ const data = await response.json();
 
 <Layout metadata={{ title }}>
   <Header />
-  <h1>Search Results</h1>
-  <div>
-    <a href="https://form.asana.com/?k=xqP6aUnpCk3PeMgTe7J1vA&d=88303944259432" class="button" target="_blank">
-      Submit Event
-    </a>
-    <a
-      href="https://instruction.austincc.edu/tledupdates/2019/08/20/how-to-overlap-accs-faculty-events-google-calendar-with-your-acc-google-calendar/"
-      class="button"
-      target="_blank"
-    >
-      Add Faculty Events Google Calendar
-    </a>
+  <div class="max-w-5xl mx-auto mb-8 px-8">
+    <div class="text-xs py-4 uppercase">
+      <a href="/">Home</a> / Calendar
+    </div>
+    <h1 class="acc-bottom-border-line text-3xl font-bold uppercase">Calendar</h1>
+    <div class="flex justify-center gap-4 mt-4">
+      <a
+        href="https://form.asana.com/?k=Q7C_5J_2GzFc42pZm1ketg&d=88303944259432"
+        class="button rounded"
+        target="_blank"
+      >
+        Submit Event
+      </a>
+      <a
+        href="https://instruction.austincc.edu/tledupdates/2019/08/20/how-to-overlap-accs-faculty-events-google-calendar-with-your-acc-google-calendar/"
+        class="button rounded"
+        target="_blank"
+      >
+        Add Faculty Events Google Calendar
+      </a>
+    </div>
+    <CalendarGrid client:load calendarData={data} />
   </div>
-  <CalendarGrid client:load calendarData={data} />
-</Layout>
-<Footer />
 
-<!-- 
+  <Footer />
+
+  <!--
 export default SearchPage
 
 const SearchResult = styled.div`
@@ -49,3 +58,4 @@ const Query = styled.span`
   color: purple;
   font-weight: bold;
 ` -->
+</Layout>
