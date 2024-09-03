@@ -57,7 +57,13 @@ const currentReport = await fetchReport(encodeURI(selectedReport));
         <!-- <select onChange={this.handleSheetSelect}> -->
         <select class="p-2 border border-neutral-300" id="archives">
           <option value={encodeURI(sheetTitles[0])}>Current Report</option>
-          {sheetTitles.map((title) => <option value={encodeURI(title)}>{title}</option>)}
+          {
+            sheetTitles.map((title) => (
+              <option value={encodeURI(title)} selected={title === selectedReport}>
+                {title}
+              </option>
+            ))
+          }
         </select>
         <script is:inline>
           // get the select element and add an event listener
