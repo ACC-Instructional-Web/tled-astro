@@ -26,7 +26,7 @@ const Event = (props) => {
         {event[7] && <span>{event[7]}</span>}
       </div>
       {event[1]}
-      <p class="pb-2">{link ? <a href={link}>{title}</a> : <span>{title}</span>}</p>
+      <p className="pb-2">{link ? <a href={link}>{title}</a> : <span>{title}</span>}</p>
       {tags && (
         <div>
           {tags.map((tag) => (
