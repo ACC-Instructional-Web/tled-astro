@@ -40,12 +40,16 @@ const cleanedCrumbUrls = breadcrumbData.map((crumb) => {
     font-weight: 600;
   }
 
-  a:after {
+  li:after {
     position: relative;
     margin: 0 0.75rem;
     opacity: 1;
     content: '/';
     color: #cacaca;
+  }
+
+  li:last-child:after {
+    display: none;
   }
 
   .current {
