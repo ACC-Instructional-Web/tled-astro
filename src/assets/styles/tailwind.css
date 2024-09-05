@@ -253,3 +253,19 @@ h1.acc-bottom-border-line {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
+.close {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #666;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 1rem;
+  height: 1.15rem;
+  text-align: center;
+  line-height: 1rem;
+  cursor: pointer;
+}
