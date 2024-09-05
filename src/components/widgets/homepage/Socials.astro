@@ -6,33 +6,36 @@ import { Icon } from 'astro-icon/components';
   li svg {
     fill: #4d1979;
   }
+  li {
+    list-style: none;
+  }
 </style>
 
 <div class="home-social-icons">
   <Icon name="TLED" class="mb-4 hidden md:block TLED h-24 w-44" />
-  <ul class="flex justify-around">
+  <ul class="flex justify-around ml-0">
     <li>
       <a href="https://www.youtube.com/channel/UC9J9Z9Q6Z6">
-        <Icon name="youtube" class="w-8 h-8" />
+        <Icon name="youtube" class="w-8 h-8 mr-1" />
       </a>
       <li>
         <a href="https://www.facebook.com/accTLED/">
-          <Icon name="facebook" class="w-7 h-7" />
+          <Icon name="facebook" class="w-7 h-7 mx-1" />
         </a>
       </li>
       <li>
         <a href="https://twitter.com/accTLED">
-          <Icon name="twitter" class="w-7 h-7" />
+          <Icon name="twitter" class="w-7 h-7 mx-1" />
         </a>
       </li>
       <li>
         <a href="https://www.instagram.com/acctled/">
-          <Icon name="instagram" class="w-7 h-7" />
+          <Icon name="instagram" class="w-7 h-7 mx-1" />
         </a>
       </li>
       <li>
         <a href="https://www.linkedin.com/company/austin-community-college-tled">
-          <Icon name="linkedin" class="w-7 h-7" />
+          <Icon name="linkedin" class="w-7 h-7 ml-1" />
         </a>
       </li>
     </li>
