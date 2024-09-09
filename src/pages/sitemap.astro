@@ -1,0 +1,59 @@
+---
+import Axios from 'axios';
+import Layout from '~/layouts/Layout.astro';
+import Header from '../components/widgets/Header.astro';
+import Footer from '../components/widgets/Footer.astro';
+import { sitemapData } from '~/config';
+
+const title = 'Sitemap';
+
+// I had to use Axios because fetch was not working
+
+const html = await Axios.get(sitemapData)
+  .catch(function (error) {
+    // handle error
+    console.error('*** ERROR *** SitemapPage.js: ', error);
+  })
+  .then((response) => response.data);
+---
+
+<Layout metadata={{ title }}>
+  <Header />
+  <div class="max-w-5xl mx-auto mb-8 px-8">
+    <div class="text-xs py-4 uppercase">
+      <a href="/">Home</a> / Sitemap
+    </div>
+    <h1 class="acc-bottom-border-line text-3xl font-bold uppercase">Sitemap</h1>
+    <style is:global>
+      #sitemap ul {
+        margin-left: 1rem;
+      }
+      #sitemap ul li {
+        padding: 0.4rem 0;
+      }
+      #sitemap div.menu ul {
+        list-style: none;
+      }
+
+      #sitemap div.menu a {
+        font-size: 1rem;
+      }
+
+      #sitemap div.menu > ul > li > a {
+        font-size: 1.4rem;
+      }
+
+      #sitemap div.menu > ul > li > ul.children > li.page_item_has_children > a {
+        font-size: 1.2rem;
+      }
+
+      #sitemap .page-item-1365,
+      #sitemap .page-item-941,
+      #sitemap .page-item-943 {
+        display: none;
+      }
+    </style>
+    <div id="sitemap" set:html={html} />
+  </div>
+  <Footer />
+</Layout>

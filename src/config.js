@@ -18,6 +18,9 @@ export const carouselData = `${endpoint}wp/v2/pages?slug=home`;
 
 export const calendarEventsData = `https://sheets.googleapis.com/v4/spreadsheets/1feRPiGXCX19MZofZ2LgLgYbvxpGJYFByhJ6ZAlOkWiM/values/CurrentEvents?key=${import.meta.env.GOOGLE_API_KEY}`;
 
+// https://instruction.austincc.edu/tled/wp-json/customroutes/allpagesmenu
+export const sitemapData = `${endpoint}customroutes/allpagesmenu`;
+
 // ### REPORTS ###
 export const reportsID = '1VD4KvNmgoBBoVo2ukDLtD_CNFiYnrWcw2CPRIb2Ba3M';
 export const apiKey = `${import.meta.env.GOOGLE_API_KEY}`;
