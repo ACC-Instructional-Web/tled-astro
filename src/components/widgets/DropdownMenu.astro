@@ -34,7 +34,9 @@ const topNavLinks = tndata.items.map(({ title, url }) => ({
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
-<nav class="relative md:h-fit z-50 md:w-full md:block text-primary overflow-scroll md:overflow-hidden text-lg bg-white">
+<nav
+  class="relative md:h-fit z-50 md:w-full md:block text-primary overflow-scroll md:overflow-visible text-lg bg-white"
+>
   <ul class="relative md:flex items-center justify-between md:max-w-3xl md:mx-auto px-4">
     {
       topNavLinks.map(({ text, href }) => (
@@ -51,14 +53,18 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   >
     {
       links.map(({ text, href, links }) => (
-        <li class={links?.length ? 'dropdown' : ''}>
+        <li class={links?.length ? 'dropdown hover:bg-white' : ''}>
           {links?.length ? (
             <>
-              <button type="button" class="hover:text-link text-white px-4 py-3 flex items-center bg-primary">
+              <button
+                type="button"
+                class="hover:text-link text-white px-4 py-3 flex items-center bg-primary hover:bg-white hover:text-primary focus:bg-primarylight focus:text-primary"
+              >
                 {text}{' '}
                 <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
               </button>
-              <div class="dropdown-menu md:w-full left-0 md:fixed px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]">
+              {/* <div class="dropdown-menu md:w-full left-0 md:fixed px-4 md:hidden md:bg-[rgb(220,217,226)] md:py-4 md:min-w-[200px]"> */}
+              <div class="dropdown-menu md:w-full left-0 px-4 md:absolute md:hidden md:bg-primarylight md:py-4 md:min-w-[200px]">
                 <ul class="md:flex mx-auto md:px-8 gap-8 w-fit">
                   {links.map(({ text: text2, links: children2 }) => (
                     <li class="">
