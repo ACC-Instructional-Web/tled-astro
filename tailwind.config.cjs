@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         primary: 'var(--aw-color-primary)',
         primarydark: 'var(--aw-color-primary-dark)',
+        primarylight: 'var(--aw-color-primary-light)',
         secondary: 'var(--aw-color-secondary)',
         accent: 'var(--aw-color-accent)',
         highlight: 'var(--aw-color-highlight)',
