@@ -26,8 +26,8 @@ const title = pageContent?.title;
 const content = pageContent?.content;
 const acf = pageContent?.acf;
 const template = pageContent?.template;
+console.log('template :>> ', template);
 
-// console.log('template :>> ', template);
 // console.log('pageContent :>> ', pageContent);
 
 if (!pageContent) {
@@ -36,7 +36,7 @@ if (!pageContent) {
 }
 
 const pageTitle = pageContent ? title.rendered.replace(/&amp;/g, '&') : null;
-// console.log('pageTitle :>> ', pageTitle);
+console.log('pageTitle :>> ', pageTitle);
 
 const ACFData = pageContent ? acf : null;
 const heroData = ACFData ? ACFData?.hero_content : null;
@@ -49,6 +49,10 @@ const heroData = ACFData ? ACFData?.hero_content : null;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+
+  #main-content :global(iframe) {
+    width: 100%;
+  }
 </style>
 <Layout>
   {
@@ -57,43 +61,38 @@ const heroData = ACFData ? ACFData?.hero_content : null;
   }
 
   <Breadcrumbs id={pageContent.id} />
+  <div id="main-content">
+    <div class="max-w-5xl mx-auto mb-8 acc-bottom-border px-8">
+      {/* no sidebars */}
+      {!template && <h1 class="text-3xl font-bold uppercase">{pageTitle}</h1>}
+      {content.rendered && <div set:html={content.rendered} />}
+      {/* End no sidebars */}
+      {/* sidebar left only */}
+      {
+        template === 'page-sidebar-left.php' && (
+          <SidebarLeft
+            content={content.rendered}
+            sidebar={ACFData.sidebar_left}
+            sidebarColors={ACFData.sidebar_left_background}
+            title={pageTitle}
+          />
+        )
+      }
+      {/*  End sidebar left only */}
 
-  <div class="max-w-5xl mx-auto mb-8 acc-bottom-border px-8">
-    {/* no sidebars */}
-    {
-      !template && content.rendered && (
-        <>
-          <h1 class="text-3xl font-bold uppercase">{pageTitle}</h1>
-          <div set:html={content.rendered} />
-        </>
-      )
-    }
-    {/* End no sidebars */}
-    {/* sidebar left only */}
-    {
-      template === 'page-sidebar-left.php' && (
-        <SidebarLeft
-          content={content.rendered}
-          sidebar={ACFData.sidebar_left}
-          sidebarColors={ACFData.sidebar_left_background}
-          title={pageTitle}
-        />
-      )
-    }
-    {/*  End sidebar left only */}
-
-    {/* sidebar right only */}
-    {
-      template === 'page-sidebar-right.php' && (
-        <SidebarRight
-          content={content.rendered}
-          sidebar={ACFData.sidebar_right}
-          sidebarColors={ACFData.sidebar_right_background}
-          title={pageTitle}
-        />
-      )
-    }
-    {/*  End sidebar right only */}
+      {/* sidebar right only */}
+      {
+        template === 'page-sidebar-right.php' && (
+          <SidebarRight
+            content={content.rendered}
+            sidebar={ACFData.sidebar_right}
+            sidebarColors={ACFData.sidebar_right_background}
+            title={pageTitle}
+          />
+        )
+      }
+      {/*  End sidebar right only */}
+    </div>
+    {ACFData && <ACF layouts={ACFData.layouts} />}
   </div>
-  {ACFData && <ACF layouts={ACFData.layouts} />}
 </Layout>
