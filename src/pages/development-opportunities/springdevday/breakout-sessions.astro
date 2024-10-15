@@ -1,0 +1,23 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+
+const title = 'Spring Development Day';
+
+// const response = await fetch(calendarEventsData);
+// const data = await response.json();
+---
+
+<Layout metadata={{ title }}>
+  <Header />
+  <div class="max-w-5xl mx-auto mb-8 px-8">
+    <div class="text-[11px] py-4 uppercase">
+      <a href="/">Home</a> / Spring Development Day
+    </div>
+    <h1 class="acc-bottom-border-line text-3xl font-bold uppercase">Spring Development Day</h1>
+    <div class="flex justify-center gap-4 mt-4"></div>
+  </div>
+
+  <Footer />
+</Layout>
