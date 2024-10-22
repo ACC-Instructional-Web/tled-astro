@@ -17,8 +17,8 @@ const { accordion, heading } = layout;
   });
 </script>
 <section>
-  <h2 class="mt-6 max-w-5xl mx-auto w-full px-8">{heading}</h2>
-  <dl class="mb-10 divide-y divide-gray-900/10 max-w-5xl mx-auto w-full border-b border-gray-900/10 lg:px-12 accordion">
+  {heading && <h2 class="mt-6 max-w-5xl mx-auto w-full px-8" set:html={cleanHTML(heading)} />}
+  <dl class="mb-10 divide-y divide-gray-900/10 max-w-5xl mx-auto w-full border-b border-gray-900/10 px-8 accordion">
     {
       accordion.map(({ title, description }) => (
       <div class="">
@@ -26,7 +26,7 @@ const { accordion, heading } = layout;
       <!-- Expand/collapse question button -->
       <button
         type="button"
-        class="flex w-full items-start hover:bg-gray-200 justify-between text-left text-gray-900 p-6"
+        class="flex w-full items-start hover:bg-gray-200 justify-between text-left text-gray-900 text-primary p-6"
         aria-controls="faq-0"
         aria-expanded="false"
       >
