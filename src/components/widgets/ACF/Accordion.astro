@@ -17,7 +17,7 @@ const { accordion, heading } = layout;
   });
 </script>
 <section>
-  <h2 class="mt-6 max-w-5xl mx-auto w-full px-8">{heading}</h2>
+  {heading && <h2 class="mt-6 max-w-5xl mx-auto w-full px-8">{heading}</h2>}
   <dl class="mb-10 divide-y divide-gray-900/10 max-w-5xl mx-auto w-full border-b border-gray-900/10 px-8 accordion">
     {
       accordion.map(({ title, description }) => (
