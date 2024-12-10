@@ -15,7 +15,7 @@ import {
   lazyImagesRehypePlugin,
 } from './src/utils/frontmatter.mjs';
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel/serverless';
+// import vercel from '@astrojs/vercel/serverless';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hasExternalScripts = false;
 const whenExternalScripts = (items = []) =>

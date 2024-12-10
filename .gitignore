@@ -28,3 +28,5 @@ pnpm-lock.yaml
 # sst
 .sst
 .vercel
+
+.amplify-hosting
