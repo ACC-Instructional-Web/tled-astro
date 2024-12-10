@@ -84,7 +84,7 @@ export default defineConfig({
       },
     },
   },
-  output: 'server',
   adapter: awsAmplify(),
+  output: 'server',
   // adapter: vercel()
 });
