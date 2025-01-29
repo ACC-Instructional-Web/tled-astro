@@ -61,7 +61,7 @@
     "@typescript-eslint/parser": "^7.7.1",
     "astro-compress": "^2.3.0",
     "astro-eslint-parser": "^1.0.1",
-    "aws-cdk-lib": "2.142.1",
+    "aws-cdk-lib": "2.177.0",
     "constructs": "10.3.0",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "^1.0.3",
